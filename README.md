@@ -2,7 +2,7 @@
 
 Podzial na role:
 <br><br>
-Piotr Klak - PHP, HTML/CSS, JavaScript,  Grafika<br>
+Piotr Klak - HTML/CSS, JavaScript,  Grafika<br>
 Kamil Jaromin - HTML/CSS, JavaScript<br>
 Grzegorz Mocny - HTML/CSS, JavaScript, PHP<br>
 Michal Dzik - PHP, Grafika<br>
