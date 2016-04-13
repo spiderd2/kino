@@ -1,0 +1,15 @@
+Serwer:
+mysql1.ugu.pl
+
+Nazwa bazy:
+db684503
+
+U¿ytkownik:
+db684503
+
+haslo:
+kiepskiehaslo
+
+jak potrzebujecie cos wrzucic/sprawdzic to na ugu.pl
+login: spiderd2
+haslo: kiepskiehaslo
