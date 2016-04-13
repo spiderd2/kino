@@ -19,3 +19,20 @@ INSERT INTO  `db684503`.`uzytkownicy` (
 VALUES (
 NULL ,  'admin', MD5(  'admin' ) ,  'admin@kinososnowiec.ugu.pl'
 );
+
+ALTER TABLE  `uzytkownicy` 
+ADD  `imie` VARCHAR( 30 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
+ADD  `nazwisko` VARCHAR( 30 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL ,
+ADD  `telefon` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL
+
+INSERT INTO  `db684503`.`uzytkownicy` (
+`id_uzytkownika` ,
+`login` ,
+`haslo` ,
+`email` ,
+`imie` ,
+`nazwisko` ,
+`telefon`
+)
+VALUES (
+NULL ,  'muchomor1',  'muchomor1',  'muchomor@muchomor.pl',  'Michał',  'Muchomorowski',  '555789451'
