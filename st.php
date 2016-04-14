@@ -6,7 +6,7 @@
 <!DOCTYPE HTML >
 <html lang="pl">
 <head>
-<title>Michał poleca</title>
+<title>Kino</title>
 <meta charset="utf-8"/>
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
