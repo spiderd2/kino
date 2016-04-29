@@ -1,0 +1,17 @@
+sosnowiec_kino_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SosnowiecKinoBundle:Default:index }
+    
+sosnowiec_kino_registerUser:
+    path:   /register-user
+    defaults:
+        _controller: SosnowiecKinoBundle:Default:registerUser
+       
+sosnowiec_kino_annotations:
+    resource: "@SosnowiecKinoBundle/Controller"
+    type: annotation
+
+sosnowiec_kino_aboutPage:
+    path: /about
+    defaults:
+        _controller: SosnowiecKinoBundle:Pages:about

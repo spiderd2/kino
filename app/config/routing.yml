@@ -1,0 +1,7 @@
+sosnowiec_kino:
+    resource: "@SosnowiecKinoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
