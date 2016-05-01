@@ -1,71 +1,64 @@
-<!DOCTYPE html>
-<html lang="pl">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-type" content="text/html; charset=iso-8859-2">
-        <link href="{{asset('bundles/sosnowieckino/css/bootstrap.min.css')}}" rel="stylesheet">
-        <!--link rel="stylesheet" href="{{asset('bundles/sosnowieckino/responsiveslides.css')}}"-->
-        <!--link rel="stylesheet" href="{{asset('bundles/sosnowieckino/demo.css')}}"-->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <!--script src="{{asset('bundles/sosnowieckino/responsiveslides.min.js')}}"></script-->
+{% extends "SosnowiecKinoBundle::base.html.twig"%}
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+{% block pageTitle %}
+    Strona główna | {{parent()}}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{%endblock%}    
+
+
+{% block pageContent %}
+    <div class="row" style="padding-top:80px;">
         
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="{{asset('bundles/sosnowieckino/js/bootstrap.min.js')}}"></script>
-      
-        <title>Kino</title>
-
-        <!-- Bootstrap -->
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body style="background:url({{asset('bundles/sosnowieckino/images/tlo.jpg')}}); color: white">
-
-        <div class="container">
-            <div class="head" style="margin-bottom:50px;">
-                <div class="logo" style="align:center; margin-bottom:50px; "><a href="#"> <img src="{{asset('bundles/sosnowieckino/images/logo.png')}}" class="img-responsive" width="874" height="300" align="center"> </a></div>
-
-
-                <div class="col-md-2"> <a href="#">podstrona 1</a> </div>
-                <div class="col-md-2"> <a href="#">podstrona 2</a> </div>
-                <div class="col-md-2"> <a href="#">podstrona 3</a> </div>
-                <div class="col-md-2"> <a href="#">podstrona 4</a> </div>
-                <div class="col-md-2"> <a href="#">podstrona 5</a> </div>
-                <div class="col-md-2"> <a href="#">podstrona 6</a> </div>
-
-            </div>
-
-
-            <div class="row" style="padding-top:80px;">
-                <div class="col-md-3">Menu <br><br>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </div>
-                <div class="col-md-6">Nowości <br><br>
-
-
-galeria
-                   <!--tutaj wkleic galerie.........................-->
-
-                    <body>
-                        <div id="legal">
-                            Filmweb API author Michell Hodu񣯰yright (c) 2013 nSolutions.pl <br/>
-                            ResponsiveSlides.js is created by <a href="http://viljamis.com">@viljamis</a>
-                        </div>
-                </div>
-
-                <div class="col-md-3">Badziewia <br><br>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </div>
+        <div class="col-md-3">Menu <br><br>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        
+        <div class="col-md-6">Nowości <br><br>
+            
+            
+            
+            
+            
+            
+            
+            <div id="legal">
+                Filmweb API author Michell Hodu񣯰yright (c) 2013 nSolutions.pl <br/>
+                ResponsiveSlides.js is created by <a href="http://viljamis.com">@viljamis</a>
             </div>
         </div>
+        
+        <div class="col-md-3">Badziewia <br><br>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        
     </div>
-</body>
-</html>
+{%endblock%}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script>
+		// You can also use "$(window).load(function() {"
+		$(function () {
+			// Slideshow 4
+			$("#slider4").responsiveSlides({
+			auto: false,
+			pager: false,
+			nav: true,
+			speed: 500,
+			namespace: "callbacks",
+			/*
+			before: function () {
+			  $('.events').append("<li>before event fired.</li>");
+			},
+			after: function () {
+			  $('.events').append("<li>after event fired.</li>");
+			}*/
+                    });
+
+		});
+    </script>
+{%endblock%} 
