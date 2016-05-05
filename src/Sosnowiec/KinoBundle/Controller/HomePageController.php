@@ -33,9 +33,10 @@ class HomePageController extends Controller {
      * @Template
      */
     public function loginAction(Request $request) {
-
-        $session = $this->getRequest()->getSession();
-        $em = $this->getDoctrine()->getEntityManager();
+        $session = $request->getSession();
+        //$session = $this->get('request')->getSession();
+        //->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('SosnowiecKinoBundle:Uzytkownicy');
         if ($session->has('login')) {
             $login = $session->get('login');
@@ -105,6 +106,8 @@ class HomePageController extends Controller {
      */
     public function registerAction(Request $request) {
         if ($request->getMethod() == 'POST') {
+
+
             $login = $request->get('login');
             $imie = $request->get('imie');
             $nazwisko = $request->get('nazwisko');
@@ -120,7 +123,8 @@ class HomePageController extends Controller {
             $user->setNazwisko($nazwisko);
             $user->setTelefon($telefon);
 
-            $em = $this->getDoctrine()->getEntityManager();
+            //->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
@@ -148,7 +152,7 @@ class HomePageController extends Controller {
      * @Template
      */
     public function logoutAction() {
-        $session = $this->getRequest()->getSession();
+        $session = $this->get('request')->getSession();
         $session->clear();
 
         $redirectUrl = $this->generateUrl('sosnowiec_kino_login');
