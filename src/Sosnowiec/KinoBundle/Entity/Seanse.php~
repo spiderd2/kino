@@ -1,0 +1,60 @@
+<?php
+
+namespace Sosnowiec\KinoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Seanse
+ *
+ * @ORM\Table(name="seanse", uniqueConstraints={@ORM\UniqueConstraint(name="idseanse_UNIQUE", columns={"id_seansu"})}, indexes={@ORM\Index(name="fk_seanse_filmy1_idx", columns={"filmy_id_filmu"}), @ORM\Index(name="fk_seanse_sale_kinowe1_idx", columns={"sale_kinowe_id_sale_kinowe"})})
+ * @ORM\Entity
+ */
+class Seanse
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="rozpoczecie", type="datetime", nullable=false)
+     */
+    private $rozpoczecie;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="zakonczenie", type="datetime", nullable=false)
+     */
+    private $zakonczenie;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_seansu", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idSeansu;
+
+    /**
+     * @var \Sosnowiec\KinoBundle\Entity\SaleKinowe
+     *
+     * @ORM\ManyToOne(targetEntity="Sosnowiec\KinoBundle\Entity\SaleKinowe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="sale_kinowe_id_sale_kinowe", referencedColumnName="id_sale_kinowe")
+     * })
+     */
+    private $saleKinoweSaleKinowe;
+
+    /**
+     * @var \Sosnowiec\KinoBundle\Entity\Filmy
+     *
+     * @ORM\ManyToOne(targetEntity="Sosnowiec\KinoBundle\Entity\Filmy")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="filmy_id_filmu", referencedColumnName="id_filmu")
+     * })
+     */
+    private $filmyFilmu;
+
+
+}
+

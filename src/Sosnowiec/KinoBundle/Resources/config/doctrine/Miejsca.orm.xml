@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Sosnowiec\KinoBundle\Entity\Miejsca" table="miejsca">
+    <indexes>
+      <index name="fk_miejsca_sale_kinowe1_idx" columns="sale_kinowe_id_sale_kinowe"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_miejsca_UNIQUE" columns="id_miejsca"/>
+    </unique-constraints>
+    <id name="idMiejsca" type="integer" column="id_miejsca">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="rzad" type="integer" column="rzad" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="miejsce" type="integer" column="miejsce" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <many-to-one field="saleKinoweSaleKinowe" target-entity="SaleKinowe" fetch="LAZY">
+      <join-columns>
+        <join-column name="sale_kinowe_id_sale_kinowe" referenced-column-name="id_sale_kinowe"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

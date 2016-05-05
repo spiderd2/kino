@@ -1,0 +1,60 @@
+<?php
+
+namespace Sosnowiec\KinoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Rezerwacje
+ *
+ * @ORM\Table(name="rezerwacje", uniqueConstraints={@ORM\UniqueConstraint(name="id_rezerwacje_UNIQUE", columns={"id_rezerwacji"})}, indexes={@ORM\Index(name="fk_rezerwacje_uzytkownicy_idx", columns={"uzytkownicy_id_uzytkownika"}), @ORM\Index(name="fk_rezerwacje_seanse1_idx", columns={"seanse_id_seansu"})})
+ * @ORM\Entity
+ */
+class Rezerwacje
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_rezerwacji", type="datetime", nullable=false)
+     */
+    private $dataRezerwacji = 'CURRENT_TIMESTAMP(6)';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_seansu", type="date", nullable=false)
+     */
+    private $dataSeansu;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_rezerwacji", type="smallint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRezerwacji;
+
+    /**
+     * @var \Sosnowiec\KinoBundle\Entity\Uzytkownicy
+     *
+     * @ORM\ManyToOne(targetEntity="Sosnowiec\KinoBundle\Entity\Uzytkownicy")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="uzytkownicy_id_uzytkownika", referencedColumnName="id_uzytkownika")
+     * })
+     */
+    private $uzytkownicyUzytkownika;
+
+    /**
+     * @var \Sosnowiec\KinoBundle\Entity\Seanse
+     *
+     * @ORM\ManyToOne(targetEntity="Sosnowiec\KinoBundle\Entity\Seanse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="seanse_id_seansu", referencedColumnName="id_seansu")
+     * })
+     */
+    private $seanseSeansu;
+
+
+}
+

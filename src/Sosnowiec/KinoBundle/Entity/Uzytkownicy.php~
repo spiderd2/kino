@@ -1,0 +1,68 @@
+<?php
+
+namespace Sosnowiec\KinoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Uzytkownicy
+ *
+ * @ORM\Table(name="uzytkownicy", uniqueConstraints={@ORM\UniqueConstraint(name="id_uzytkownika_UNIQUE", columns={"id_uzytkownika"}), @ORM\UniqueConstraint(name="login_UNIQUE", columns={"login"}), @ORM\UniqueConstraint(name="email_UNIQUE", columns={"email"})})
+ * @ORM\Entity
+ */
+class Uzytkownicy
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=20, nullable=false)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="haslo", type="string", length=32, nullable=false)
+     */
+    private $haslo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=254, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imie", type="string", length=30, nullable=true)
+     */
+    private $imie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nazwisko", type="string", length=30, nullable=true)
+     */
+    private $nazwisko;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefon", type="string", length=20, nullable=true)
+     */
+    private $telefon;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_uzytkownika", type="smallint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idUzytkownika;
+
+
+}
+
