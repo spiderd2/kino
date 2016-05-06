@@ -12,40 +12,67 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link href="{{asset('bundles/sosnowieckino/js/parsley/parsley.css')}}" rel="stylesheet">
+<style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
 
+        form {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 25px;
+            
+        }
+        .container {
+        width: 500px;
+        clear: both;
+    }
+    .container input {
+        width: 100%;
+        clear: both;
+    }
+        
+    </style>
+    
 {%endblock%}    
 
 
 {% block pageContent %}
-    <div class="row" style="padding-top:80px;">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="container">
 
         <form id="form" class="" method="POST" action="{{path('sosnowiec_kino_register')}}" data-validate="parsley">
             <h2>Rejestracja</h2>
-            <label>Nazwa uzytkownika</label>
-            <input type="text" name="login" class="input-lg" data-trigger="change" data-reguired="true"/>
+            <!--<label>Nazwa uzytkownika</label>-->
+            <input type="text" name="login" class="input-lg" data-trigger="change" data-reguired="true" placeholder="Nazwa użytkownika"/>
             <br/>
-            <label>Imię</label>
-            <input type="text" name="imie" class="input-lg"/>
+            {#<label>Imię</label>#}
+            <input type="text" name="imie" class="input-lg" placeholder="Imię"/>
             <br/>
-            <label>Nazwisko</label>
-            <input type="text" name="nazwisko" class="input-lg"/>
+           {# <label>Nazwisko</label>#}
+            <input type="text" name="nazwisko" class="input-lg" placeholder="Nazwisko"/>
             <br/>
-            <label>Email</label>
-            <input type="text" name="email" class="input-lg"/>
+            {#<label>Email</label>#}
+            <input type="text" name="email" class="input-lg" placeholder="Email"/>
             <br/>
-            <label>Hasło</label>
-            <input id="pass" type="text"  name="haslo" class="input-lg"data-trigger="change" data-reguired="true"/>
+            {#<label>Hasło</label>#}
+            <input id="pass" type="text"  name="haslo" class="input-lg"data-trigger="change" data-reguired="true" placeholder="Hasło"/>
             <br/>
-            <label>Powtórz Hasło</label>
-            <input id="passRe" type="text" name="haslo" class="input-lg" data-trigger="change" data-reguired="true" data-equalto="#pass"/>
+            {#<label>Powtórz Hasło</label>#}
+            <input id="passRe" type="text" name="haslo" class="input-lg" data-trigger="change" data-reguired="true" data-equalto="#pass" placeholder="Powtórz hasło"/>
             <br/>
-            <label>Telefon</label>
-            <input type="text" name="telefon" class="input-lg"/>
+            {#<label>Telefon</label>#}
+            <input type="text" name="telefon" class="input-lg" placeholder="Telefon"/><br><br>
             <div>
-                <button class="btn btn-primary" type="submit"> Stwórz konto</button>
+                <button class="btn btn-primary" type="submit"> Stwórz konto</button>              
             </div>
         </form>
-
+        </div>
     </div>
 {%endblock%}
 

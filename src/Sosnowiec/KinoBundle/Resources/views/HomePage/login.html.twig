@@ -18,7 +18,14 @@
             padding-bottom: 40px;
             background-color: #eee;
         }
+        form {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 25px;
 
+        }
         .form-signin {
             max-width: 330px;
             padding: 15px;
@@ -53,8 +60,12 @@
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
+        .container {
+            width: 500px;
+            clear: both;
+        }
     </style>
-    
+
 {%endblock%}    
 
 
@@ -67,9 +78,9 @@
             <form class="form-signin" method="POST" action="{{path('sosnowiec_kino_login')}}" data-validate="parsley">
                 <h2 class="form-signin-heading">Logowanie</h2>
                 <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus data-trigger="change" data-reguired="true" data-type="email">
+                <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" required autofocus data-trigger="change" data-reguired="true" data-type="email">
                 <label for="inputPassword" class="sr-only">Hasło</label>
-                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required data-trigger="change" data-reguired="true">
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Hasło" required data-trigger="change" data-reguired="true">
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="remember" value="remember-me"> Zapamiętaj mnie
@@ -80,29 +91,18 @@
                 <a href="{{path('sosnowiec_kino_register')}}">Zarejestruj</a>
             </form>
 
-
-
         </div> <!-- /container -->
         {%if msg is defined%}
             <div class="alert-danger fade in">
                 <strong>{{msg}}</strong>
             </div>
         {%endif%}
-
-
-
-
-
-
-
-
-
     </div>
 {%endblock%}
 
 {% block javascripts %}
     {{ parent() }}
-     <script src="{{asset('bundles/sosnowieckino/js/parsley/parsley.min.js')}}"></script>
+    <script src="{{asset('bundles/sosnowieckino/js/parsley/parsley.min.js')}}"></script>
     <script src="{{asset('bundles/sosnowieckino/js/parsley/parsley-standalone.min.js')}}"></script>
     <script src="{{asset('bundles/sosnowieckino/js/parsley/parsley.extend.min.js')}}"></script>
 

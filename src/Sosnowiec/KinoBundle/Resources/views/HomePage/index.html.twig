@@ -6,28 +6,68 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <style>
+        .row h3 
+        {
+            text-align:center;
+        }
+        .kolumna
+        {
+            background-color:  white;
+            border-radius: 25px;
+            padding:5px;
+            padding-bottom:10px;
+        }
+    </style>
 {%endblock%}    
 
 
 {% block pageContent %}
-    <div class="row" style="padding-top:80px;">
+    <div class="row" style="padding:80px;">
         
-        <div class="col-md-3"> Naglowek <br><br>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </div>
-        
-        <div class="col-md-6">Nowości <br><br>
-            <!--tutaj wkleic galerie.........................-->
-            <div id="legal">
-                Filmweb API author Michell Hodu񣯰yright (c) 2013 nSolutions.pl <br/>
-                ResponsiveSlides.js is created by <a href="http://viljamis.com">@viljamis</a>
+        <div class="col-md-3">
+            <div class="kolumna"><h3>Nagłówek1</h3> <br>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                It has survived not only five centuries, but also the leap into electronic typesetting, 
+                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                like Aldus PageMaker including versions of Lorem Ipsum.
             </div>
         </div>
-        
-        <div class="col-md-3">Badziewia <br><br>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+
+
+        <div class="col-md-6">
+            <div class="kolumna"><h3>Nowości</h3> <br>       
+                <!--tutaj wkleic galerie.........................-->
+                <div id="legal">
+                    Filmweb API author Michell Hodu񣯰yright (c) 2013 nSolutions.pl <br/>
+                    ResponsiveSlides.js is created by <a href="http://viljamis.com">@viljamis</a>
+                    <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                    It has survived not only five centuries, but also the leap into electronic typesetting, 
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                    like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+            </div>
         </div>
-        
+
+
+
+        <div class="col-md-3">
+            <div class="kolumna"><h3>Nagłówek2</h3> <br>           
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                It has survived not only five centuries, but also the leap into electronic typesetting, 
+                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                like Aldus PageMaker including versions of Lorem Ipsum.</div>
+        </div>
     </div>
 {%endblock%}
 
