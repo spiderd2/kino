@@ -13,8 +13,7 @@
     <![endif]-->
     <link href="{{asset('bundles/sosnowieckino/js/parsley/parsley.css')}}" rel="stylesheet">
 <style>
-        body {
-            
+        body {           
             padding-bottom: 40px;
             background-color: #eee;
         }
@@ -61,10 +60,10 @@
             <input type="text" name="email" class="input-lg" placeholder="Email"/>
             <br/>
             {#<label>Hasło</label>#}
-            <input id="pass" type="text"  name="haslo" class="input-lg"data-trigger="change" data-reguired="true" placeholder="Hasło"/>
+            <input id="pass" type="password"  name="haslo" class="input-lg"data-trigger="change" data-reguired="true" placeholder="Hasło"/>
             <br/>
             {#<label>Powtórz Hasło</label>#}
-            <input id="passRe" type="text" name="haslo" class="input-lg" data-trigger="change" data-reguired="true" data-equalto="#pass" placeholder="Powtórz hasło"/>
+            <input id="passRe" type="password" name="haslo" class="input-lg" data-trigger="change" data-reguired="true" data-equalto="#pass" placeholder="Powtórz hasło"/>
             <br/>
             {#<label>Telefon</label>#}
             <input type="text" name="telefon" class="input-lg" placeholder="Telefon"/><br><br>
