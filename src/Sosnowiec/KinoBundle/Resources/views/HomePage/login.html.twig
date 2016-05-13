@@ -74,19 +74,16 @@
 
 
         <div class="container">
+            {% if error is defined%}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
             <form class="form-signin" method="POST" action="{{path('sosnowiec_kino_login')}}" data-validate="parsley">
                 <h2 class="form-signin-heading">Logowanie</h2>
                 <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" required autofocus data-trigger="change" data-reguired="true" data-type="email">
+                <input type="email" id="inputEmail" class="form-control" name="_username" value="{% if last_username is defined%}{{ last_username }}{% endif %}" placeholder="Email" required autofocus data-trigger="change" data-reguired="true" data-type="email">
                 <label for="inputPassword" class="sr-only">Hasło</label>
-                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Hasło" required data-trigger="change" data-reguired="true">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="remember" value="remember-me"> Zapamiętaj mnie
-                    </label>
-
-                </div>
+                <input type="password" id="inputPassword" class="form-control" name="_password" placeholder="Hasło" required data-trigger="change" data-reguired="true">
                 <button class="btn btn-lg btn-primary" type="submit">Zaloguj</button>
                 <a href="{{path('sosnowiec_kino_register')}}">Zarejestruj</a>
             </form>

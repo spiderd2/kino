@@ -5,3 +5,6 @@ sosnowiec_kino:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    
+logout:
+    path: /logout

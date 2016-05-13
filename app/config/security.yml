@@ -1,20 +1,48 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
+    
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        Sosnowiec\KinoBundle\Entity\Uzytkownicy: plaintext
+        
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, our_db_provider]
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    ryan:
+                        password: ryan
+                        roles: 'ROLE_USER'
+                    admin@admin.pl:
+                        password: admin
+                        roles: 'ROLE_ADMIN'
+        our_db_provider:
+            entity:
+                class: SosnowiecKinoBundle:Uzytkownicy
+                property: email               
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        main:
+           
+        default:
             anonymous: ~
+            form_login:
+                login_path: sosnowiec_kino_login
+                check_path: sosnowiec_kino_login
+                default_target_path: /kino
+            logout:
+                path:   /logout
+                target: /kino
+            
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }    
             # activate different ways to authenticate
 
             # http_basic: ~

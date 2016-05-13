@@ -34,8 +34,17 @@ class HomePageController extends Controller {
      */
     public function loginAction(Request $request) {
         $session = $request->getSession();
-        //$session = $this->get('request')->getSession();
-        //->getEntityManager();
+        $authenticationUtils = $this->get('security.authentication_utils');
+                // get the login error if there is one
+                $error = $authenticationUtils->getLastAuthenticationError();
+
+                // last username entered by the user
+                $lastUsername = $authenticationUtils->getLastUsername();
+        
+
+//        $session = $this->getRequest()->getSession();
+//        $em = $this->getDoctrine()->getEntityManager();
+        
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('SosnowiecKinoBundle:Uzytkownicy');
         if ($session->has('login')) {
@@ -55,9 +64,9 @@ class HomePageController extends Controller {
         }
         if ($request->getMethod() == 'POST') {
             $session->clear();
-            $email = $request->get('email');
-            $password = $request->get('password');
-            $remember = $request->get('remember');
+            $email = $request->get('_username');
+            $password = $request->get('_password');
+            
 
             $username = $repository->findOneBy(array(
                 'email' => $email,
@@ -65,14 +74,18 @@ class HomePageController extends Controller {
             ));
 
             if ($username) {
-                if ($remember == 'remember-me') {
-                    $login = new Login();
-                    $login->setUsername($email);
-                    $login->setPassword($password);
-                    $session->set('login', $login);
-                }
+                
+                
+                $login = new Login();
+                $login->setUsername($email);
+                $login->setPassword($password);
+                $session->set('login', $login);
+                $session->set('username', $username->getLogin());
+
                 return $this->render('SosnowiecKinoBundle:HomePage:welcome.html.twig', array(
-                            'name' => $username->getImie()
+                            'name' => $username->getImie(),
+                            'last_username' => $lastUsername,
+                            'error' => $error,
                 ));
             } else {
                 if ($session->has('login')) {
@@ -106,8 +119,6 @@ class HomePageController extends Controller {
      */
     public function registerAction(Request $request) {
         if ($request->getMethod() == 'POST') {
-
-
             $login = $request->get('login');
             $imie = $request->get('imie');
             $nazwisko = $request->get('nazwisko');
@@ -123,14 +134,20 @@ class HomePageController extends Controller {
             $user->setNazwisko($nazwisko);
             $user->setTelefon($telefon);
 
-            //->getEntityManager();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
 
-            $redirectUrl = $this->generateUrl('sosnowiec_kino_login');
-            return $this->redirect($redirectUrl);
-            //return $this->render('SosnowiecKinoBundle:HomePage:login.html.twig');
+            //sprawdza poprawnosc zgodnie z Entity/Uzytkownicy
+            $validator = $this->get('validator');
+            $errors = $validator->validate($user);
+            if (count($errors) > 0) {
+                return new Response(print_r($errors, true));
+            } else {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($user);
+                $em->flush();
+                $redirectUrl = $this->generateUrl('sosnowiec_kino_login');
+                return $this->redirect($redirectUrl);
+                //return $this->render('SosnowiecKinoBundle:HomePage:login.html.twig');
+            }
         }
     }
 
@@ -152,7 +169,7 @@ class HomePageController extends Controller {
      * @Template
      */
     public function logoutAction() {
-        $session = $this->get('request')->getSession();
+        $session = $this->getRequest()->getSession();
         $session->clear();
 
         $redirectUrl = $this->generateUrl('sosnowiec_kino_login');

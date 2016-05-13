@@ -3,60 +3,96 @@
 namespace Sosnowiec\KinoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Uzytkownicy
  *
  * @ORM\Table(name="uzytkownicy", uniqueConstraints={@ORM\UniqueConstraint(name="id_uzytkownika_UNIQUE", columns={"id_uzytkownika"}), @ORM\UniqueConstraint(name="login_UNIQUE", columns={"login"}), @ORM\UniqueConstraint(name="email_UNIQUE", columns={"email"})})
  * @ORM\Entity
  */
-class Uzytkownicy
+class Uzytkownicy implements UserInterface, \Serializable
 {
     /**
      * @var string
-     *
+     * 
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 20
+     * )
+     * 
      * @ORM\Column(name="login", type="string", length=20, nullable=false)
      */
     private $login;
 
     /**
      * @var string
-     *
+     * 
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 32
+     * )
+     * 
      * @ORM\Column(name="haslo", type="string", length=32, nullable=false)
      */
     private $haslo;
 
     /**
      * @var string
-     *
+     * 
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 254
+     * )
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      * @ORM\Column(name="email", type="string", length=254, nullable=false)
      */
     private $email;
 
     /**
      * @var string
-     *
+    
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 30
+     * )
+     * 
      * @ORM\Column(name="imie", type="string", length=30, nullable=true)
      */
     private $imie;
 
     /**
      * @var string
-     *
+     * 
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 30
+     * )
+     * 
      * @ORM\Column(name="nazwisko", type="string", length=30, nullable=true)
      */
     private $nazwisko;
 
     /**
      * @var string
-     *
+     * 
+     * @Assert\NotBlank
+     * 
+     * @Assert\Length(
+     *      max = 20
+     * )
+     * 
      * @ORM\Column(name="telefon", type="string", length=20, nullable=true)
      */
     private $telefon;
 
     /**
      * @var integer
-     *
+     * 
+     * 
      * @ORM\Column(name="id_uzytkownika", type="smallint")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -218,4 +254,48 @@ class Uzytkownicy
     {
         return $this->idUzytkownika;
     }
+
+    public function eraseCredentials() {
+        
+    }
+
+    public function getPassword() {
+         return $this->haslo;
+    }
+
+    public function getRoles() {
+        return array('ROLE_USER');
+    }
+
+    public function getSalt() {
+        return null;
+    }
+
+    public function getUsername() {
+         return $this->login;
+    }
+    
+    public function serialize()
+    {
+        return serialize(array(
+            $this->idUzytkownika,
+            $this->login,
+            $this->haslo,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->idUzytkownika,
+            $this->login,
+            $this->haslo,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
+    }
+
 }

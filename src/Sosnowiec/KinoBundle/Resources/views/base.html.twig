@@ -34,7 +34,12 @@
                     <li> <a href="#">Repertuar</a> </li>
                     <li> <a href="#">Cennik</a> </li>
                     <li> <a href="#">Kontakt</a>    </li>   
-                    <li> <a href="{{path('sosnowiec_kino_login')}}">Logowanie</a></li>
+                    
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="{{path('logout')}}">Wyloguj, {{ app.user.username }}</a></li> 
+                    {%else%}  
+                        <li> <a href="{{path('sosnowiec_kino_login')}}">Logowanie</a></li>
+                    {%endif%}
                 </ul>
             </div>
         </nav>
