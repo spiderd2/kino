@@ -176,4 +176,14 @@ class HomePageController extends Controller {
         return $this->redirect($redirectUrl);
     }
 
+     /**
+     * @Route("/cennik",
+     *      name="sosnowiec_kino_cennik")
+     * 
+     * @Template
+     */
+    public function cennikAction() {
+       
+        return array();
+    }
 }
