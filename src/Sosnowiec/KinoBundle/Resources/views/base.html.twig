@@ -30,10 +30,10 @@
                 </div>
                 <ul class="nav navbar-nav">
 
-                    <li> <a href="#">Strona główna</a> </li>
-                    <li> <a href="#">Repertuar</a> </li>
+                    <li> <a href="{{path('sosnowiec_kino_index')}}">Strona główna</a> </li>
+                    <li> <a href="{{path('sosnowiec_kino_repertuar')}}">Repertuar</a> </li>
                     <li> <a href="{{path('sosnowiec_kino_cennik')}}">Cennik</a> </li>
-                    <li> <a href="#">Kontakt</a>    </li>   
+                    <li> <a href="{{path('sosnowiec_kino_kontakt')}}">Kontakt</a>    </li>   
                     
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li><a href="{{path('logout')}}">Wyloguj, {{ app.user.username }}</a></li> 

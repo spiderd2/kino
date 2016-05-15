@@ -186,4 +186,26 @@ class HomePageController extends Controller {
        
         return array();
     }
+    
+     /**
+     * @Route("/repertuar",
+     *      name="sosnowiec_kino_repertuar")
+     * 
+     * @Template
+     */
+    public function repertuarAction() {
+       
+        return array();
+    }
+    
+     /**
+     * @Route("/kontakt",
+     *      name="sosnowiec_kino_kontakt")
+     * 
+     * @Template
+     */
+    public function kontaktAction() {
+       
+        return array();
+    }
 }
