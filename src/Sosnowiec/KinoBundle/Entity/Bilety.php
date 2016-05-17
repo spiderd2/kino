@@ -7,32 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Bilety
  *
- * @ORM\Table(name="bilety", uniqueConstraints={@ORM\UniqueConstraint(name="id_biletu_UNIQUE", columns={"id_biletu"})}, indexes={@ORM\Index(name="fk_bilety_rezerwacje1_idx", columns={"rezerwacje_id_rezerwacji"}), @ORM\Index(name="fk_bilety_miejsca1_idx", columns={"miejsca_id_miejsca"})})
+ * @ORM\Table(name="bilety", uniqueConstraints={@ORM\UniqueConstraint(name="id_biletu_UNIQUE", columns={"id_biletu"})}, indexes={@ORM\Index(name="fk_bilety_rezerwacje1_idx", columns={"rezerwacje_id_rezerwacji"}), @ORM\Index(name="fk_bilety_miejsca1_idx", columns={"miejsca_id_miejsca"}), @ORM\Index(name="fk_bilety_ceny1_idx", columns={"ceny_idceny"})})
  * @ORM\Entity
  */
 class Bilety
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="rodzaj", type="string", length=45, nullable=false)
-     */
-    private $rodzaj;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ceny_biletow_id_ceny_biletow", type="integer", nullable=false)
-     */
-    private $cenyBiletowIdCenyBiletow;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cena", type="decimal", precision=10, scale=0, nullable=false)
-     */
-    private $cena;
-
     /**
      * @var integer
      *
@@ -62,79 +41,17 @@ class Bilety
      */
     private $miejscaMiejsca;
 
-
-
     /**
-     * Set rodzaj
+     * @var \Sosnowiec\KinoBundle\Entity\Ceny
      *
-     * @param string $rodzaj
-     *
-     * @return Bilety
+     * @ORM\ManyToOne(targetEntity="Sosnowiec\KinoBundle\Entity\Ceny")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ceny_idceny", referencedColumnName="idceny")
+     * })
      */
-    public function setRodzaj($rodzaj)
-    {
-        $this->rodzaj = $rodzaj;
+    private $cenyceny;
 
-        return $this;
-    }
 
-    /**
-     * Get rodzaj
-     *
-     * @return string
-     */
-    public function getRodzaj()
-    {
-        return $this->rodzaj;
-    }
-
-    /**
-     * Set cenyBiletowIdCenyBiletow
-     *
-     * @param integer $cenyBiletowIdCenyBiletow
-     *
-     * @return Bilety
-     */
-    public function setCenyBiletowIdCenyBiletow($cenyBiletowIdCenyBiletow)
-    {
-        $this->cenyBiletowIdCenyBiletow = $cenyBiletowIdCenyBiletow;
-
-        return $this;
-    }
-
-    /**
-     * Get cenyBiletowIdCenyBiletow
-     *
-     * @return integer
-     */
-    public function getCenyBiletowIdCenyBiletow()
-    {
-        return $this->cenyBiletowIdCenyBiletow;
-    }
-
-    /**
-     * Set cena
-     *
-     * @param string $cena
-     *
-     * @return Bilety
-     */
-    public function setCena($cena)
-    {
-        $this->cena = $cena;
-
-        return $this;
-    }
-
-    /**
-     * Get cena
-     *
-     * @return string
-     */
-    public function getCena()
-    {
-        return $this->cena;
-    }
 
     /**
      * Get idBiletu
@@ -192,5 +109,29 @@ class Bilety
     public function getMiejscaMiejsca()
     {
         return $this->miejscaMiejsca;
+    }
+
+    /**
+     * Set cenyceny
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Ceny $cenyceny
+     *
+     * @return Bilety
+     */
+    public function setCenyceny(\Sosnowiec\KinoBundle\Entity\Ceny $cenyceny = null)
+    {
+        $this->cenyceny = $cenyceny;
+
+        return $this;
+    }
+
+    /**
+     * Get cenyceny
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Ceny
+     */
+    public function getCenyceny()
+    {
+        return $this->cenyceny;
     }
 }

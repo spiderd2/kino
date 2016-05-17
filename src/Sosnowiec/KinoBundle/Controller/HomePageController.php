@@ -10,7 +10,7 @@ use Sosnowiec\KinoBundle\Entity\Uzytkownicy;
 use Sosnowiec\KinoBundle\Modals\Login;
 
 /**
- * @Route("/kino")
+ * @Route("/")
  */
 class HomePageController extends Controller {
 

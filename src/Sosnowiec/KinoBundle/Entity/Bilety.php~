@@ -7,32 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Bilety
  *
- * @ORM\Table(name="bilety", uniqueConstraints={@ORM\UniqueConstraint(name="id_biletu_UNIQUE", columns={"id_biletu"})}, indexes={@ORM\Index(name="fk_bilety_rezerwacje1_idx", columns={"rezerwacje_id_rezerwacji"}), @ORM\Index(name="fk_bilety_miejsca1_idx", columns={"miejsca_id_miejsca"})})
+ * @ORM\Table(name="bilety", uniqueConstraints={@ORM\UniqueConstraint(name="id_biletu_UNIQUE", columns={"id_biletu"})}, indexes={@ORM\Index(name="fk_bilety_rezerwacje1_idx", columns={"rezerwacje_id_rezerwacji"}), @ORM\Index(name="fk_bilety_miejsca1_idx", columns={"miejsca_id_miejsca"}), @ORM\Index(name="fk_bilety_ceny1_idx", columns={"ceny_idceny"})})
  * @ORM\Entity
  */
 class Bilety
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="rodzaj", type="string", length=45, nullable=false)
-     */
-    private $rodzaj;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ceny_biletow_id_ceny_biletow", type="integer", nullable=false)
-     */
-    private $cenyBiletowIdCenyBiletow;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cena", type="decimal", precision=10, scale=0, nullable=false)
-     */
-    private $cena;
-
     /**
      * @var integer
      *
@@ -61,6 +40,16 @@ class Bilety
      * })
      */
     private $miejscaMiejsca;
+
+    /**
+     * @var \Sosnowiec\KinoBundle\Entity\Ceny
+     *
+     * @ORM\ManyToOne(targetEntity="Sosnowiec\KinoBundle\Entity\Ceny")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ceny_idceny", referencedColumnName="idceny")
+     * })
+     */
+    private $cenyceny;
 
 
 }

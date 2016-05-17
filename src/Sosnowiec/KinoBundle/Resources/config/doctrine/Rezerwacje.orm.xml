@@ -16,7 +16,6 @@
         <option name="default">CURRENT_TIMESTAMP(6)</option>
       </options>
     </field>
-    <field name="dataSeansu" type="date" column="data_seansu" nullable="false"/>
     <many-to-one field="uzytkownicyUzytkownika" target-entity="Uzytkownicy" fetch="LAZY">
       <join-columns>
         <join-column name="uzytkownicy_id_uzytkownika" referenced-column-name="id_uzytkownika"/>

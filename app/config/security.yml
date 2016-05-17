@@ -36,10 +36,10 @@ security:
             form_login:
                 login_path: sosnowiec_kino_login
                 check_path: sosnowiec_kino_login
-                default_target_path: /kino
+                default_target_path: /
             logout:
                 path:   /logout
-                target: /kino
+                target: /
             
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }    

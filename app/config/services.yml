@@ -4,6 +4,56 @@ parameters:
 #    parameter_name: value
 
 services:
+    admin.uzytkownicy:
+        class: Sosnowiec\KinoBundle\Admin\UzytkownicyAdmin
+        arguments: [~, Sosnowiec\KinoBundle\Entity\Uzytkownicy, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Uzytkownicy }
+            
+    admin.rezerwacje:
+        class: Sosnowiec\KinoBundle\Admin\RezerwacjeAdmin
+        arguments: [~, Sosnowiec\KinoBundle\Entity\Rezerwacje, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Rezerwacje }      
+    
+    admin.seanse:
+        class: Sosnowiec\KinoBundle\Admin\SeanseAdmin
+        arguments: [~, Sosnowiec\KinoBundle\Entity\Seanse, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Seanse } 
+            
+    admin.filmy:
+        class: Sosnowiec\KinoBundle\Admin\FilmyAdmin
+        arguments: [~, Sosnowiec\KinoBundle\Entity\Filmy, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Filmy }   
+            
+    admin.salekinowe:
+        class: Sosnowiec\KinoBundle\Admin\SaleKinoweAdmin
+        arguments: [~, Sosnowiec\KinoBundle\Entity\SaleKinowe, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Sale Kinowe }        
+            
+    admin.bilety:
+        class: Sosnowiec\KinoBundle\Admin\BiletyAdmin
+        arguments: [~, Sosnowiec\KinoBundle\Entity\Bilety, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Bilety }
+            
+    admin.ceny:
+        class: Sosnowiec\KinoBundle\Admin\CenyAdmin
+        arguments: [~, Sosnowiec\KinoBundle\Entity\Ceny, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Ceny } 
+            
+    admin.miejsca:
+        class: Sosnowiec\KinoBundle\Admin\MiejscaAdmin
+        arguments: [~, Sosnowiec\KinoBundle\Entity\Miejsca, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Miejsca }        
+            
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    

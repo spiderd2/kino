@@ -20,13 +20,6 @@ class Rezerwacje
     private $dataRezerwacji = 'CURRENT_TIMESTAMP(6)';
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="data_seansu", type="date", nullable=false)
-     */
-    private $dataSeansu;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id_rezerwacji", type="smallint")
@@ -79,30 +72,6 @@ class Rezerwacje
     public function getDataRezerwacji()
     {
         return $this->dataRezerwacji;
-    }
-
-    /**
-     * Set dataSeansu
-     *
-     * @param \DateTime $dataSeansu
-     *
-     * @return Rezerwacje
-     */
-    public function setDataSeansu($dataSeansu)
-    {
-        $this->dataSeansu = $dataSeansu;
-
-        return $this;
-    }
-
-    /**
-     * Get dataSeansu
-     *
-     * @return \DateTime
-     */
-    public function getDataSeansu()
-    {
-        return $this->dataSeansu;
     }
 
     /**
