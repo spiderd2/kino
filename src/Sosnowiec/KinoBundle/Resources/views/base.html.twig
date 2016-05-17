@@ -33,19 +33,14 @@
                     <li> <a href="{{path('sosnowiec_kino_index')}}">Strona główna</a> </li>
                     <li> <a href="{{path('sosnowiec_kino_repertuar')}}">Repertuar</a> </li>
                     <li> <a href="{{path('sosnowiec_kino_cennik')}}">Cennik</a> </li>
-<<<<<<< HEAD
-                    <li> <a href="#">Kontakt</a>    </li>  
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li> <a href="{{path('sonata_admin_dashboard')}}">ADMIN PANEL</a></li>
-                    {%endif%}
-=======
                     <li> <a href="{{path('sosnowiec_kino_kontakt')}}">Kontakt</a>    </li>   
->>>>>>> acd5a8243973211150ffa3331c401988b8373947
-                    
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li><a href="{{path('logout')}}">Wyloguj, {{ app.user.username }}</a></li> 
                     {%else%}  
                         <li> <a href="{{path('sosnowiec_kino_login')}}">Logowanie</a></li>
+                    {%endif%}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li> <a href="{{path('sonata_admin_dashboard')}}">ADMIN PANEL</a></li>
                     {%endif%}
                 </ul>
             </div>
