@@ -17,19 +17,19 @@ class SaleKinoweAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
       
-           
+            $formMapper->add('nazwa');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper
+        $datagridMapper->add('nazwa');
             
                 ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
+        $listMapper->add('nazwa');
             
            ;
     }

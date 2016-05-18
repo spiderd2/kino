@@ -16,22 +16,25 @@ class FilmyAdmin extends Admin
     }
     protected function configureFormFields(FormMapper $formMapper)
     {
-      
+      $formMapper->add('tytul')
+              ->add('filmwebId')
+              ;
            
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper
+        $datagridMapper->add('tytul')
+              ->add('filmwebId')
             
                 ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
-            
-           ;
+        $listMapper->add('tytul')
+              ->add('filmwebId')
+              ;
     }
 }
 ?>

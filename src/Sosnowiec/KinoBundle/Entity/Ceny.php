@@ -22,7 +22,7 @@ class Ceny
     /**
      * @var string
      *
-     * @ORM\Column(name="cena", type="string", length=45, nullable=false)
+     * @ORM\Column(name="cena", type="decimal", precision=10, scale=0, nullable=false)
      */
     private $cena;
 

@@ -10,12 +10,12 @@
     <id name="idMiejsca" type="integer" column="id_miejsca">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="rzad" type="integer" column="rzad" nullable="true">
+    <field name="rzad" type="integer" column="rzad" nullable="false">
       <options>
         <option name="unsigned">1</option>
       </options>
     </field>
-    <field name="miejsce" type="integer" column="miejsce" nullable="true">
+    <field name="miejsce" type="integer" column="miejsce" nullable="false">
       <options>
         <option name="unsigned">1</option>
       </options>

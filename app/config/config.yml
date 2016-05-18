@@ -87,4 +87,7 @@ sonata_block:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts: [admin]
-        # ...
+   
+sonata_admin:        
+    title:                Kremowka ADMIN
+    title_logo:           bundles/sosnowieckino/images/kremowka.png        

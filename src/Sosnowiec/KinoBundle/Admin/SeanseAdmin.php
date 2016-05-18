@@ -16,20 +16,41 @@ class SeanseAdmin extends Admin
     }
     protected function configureFormFields(FormMapper $formMapper)
     {
-      
+        $formMapper->add('rozpoczecie')
+                ->add('saleKinoweSaleKinowe', 'entity', array(
+            'class' => 'Sosnowiec\KinoBundle\Entity\SaleKinowe',
+            'property' => 'idSaleKinowe',
+            'label' => 'Sala kinowa'
+        ))
+            ->add('filmyFilmu', 'sonata_type_model_autocomplete', array(
+            
+            'property' => 'tytul',
+            'label' => 'Tytul filmu',
+            'placeholder' => 'Wybierz tytul filmu',
+            'to_string_callback' => function($enitity, $property) {
+            return $enitity->getTytul();
+        },
+        ))
+                     ;
+
+   
            
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper
-            
+        $datagridMapper->add('rozpoczecie', 'doctrine_orm_datetime_range', array('label' => 'Rozpoczecie'))
+                ->add('saleKinoweSaleKinowe.nazwa', null, array('label' => 'Sala'))
+               ->add('filmyFilmu.tytul', null, array('label' => 'Film')) 
+                
                 ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
+        $listMapper->add('rozpoczecie', null, array('label' => 'Rozpoczecie'))
+                ->add('saleKinoweSaleKinowe.nazwa', null, array('label' => 'Sala'))
+                ->add('filmyFilmu.tytul', null, array('label' => 'Film'))
             
            ;
     }

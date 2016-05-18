@@ -17,19 +17,34 @@ class MiejscaAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
       
-           
+          $formMapper->add('miejsce')
+                  ->add('rzad')
+                  ->add('saleKinoweSaleKinowe', 'entity', array(
+            'class' => 'Sosnowiec\KinoBundle\Entity\SaleKinowe',
+            'property' => 'nazwa',
+            'label' => 'Sala kinowa'
+        ))
+            ;
+                 
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper
+        $datagridMapper->add('idMiejsca')
+                ->add('rzad')
+                ->add('miejsce')
+                ->add('saleKinoweSaleKinowe.nazwa', null, array('label' => 'Sala'))
             
                 ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
+        $listMapper->add('idMiejsca')
+                ->add('rzad')
+                ->add('miejsce')
+                ->add('saleKinoweSaleKinowe.nazwa', null, array('label' => 'Sala'))
+            
             
            ;
     }

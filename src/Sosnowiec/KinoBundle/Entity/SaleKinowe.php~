@@ -13,6 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class SaleKinowe
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nazwa", type="string", length=45, nullable=false)
+     */
+    private $nazwa;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id_sale_kinowe", type="smallint")

@@ -13,7 +13,7 @@
     </id>
     <field name="dataRezerwacji" type="datetime" column="data_rezerwacji" nullable="false">
       <options>
-        <option name="default">CURRENT_TIMESTAMP(6)</option>
+        <option name="default">CURRENT_TIMESTAMP</option>
       </options>
     </field>
     <many-to-one field="uzytkownicyUzytkownika" target-entity="Uzytkownicy" fetch="LAZY">

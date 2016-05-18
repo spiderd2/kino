@@ -7,5 +7,10 @@
     <id name="idSaleKinowe" type="smallint" column="id_sale_kinowe">
       <generator strategy="IDENTITY"/>
     </id>
+    <field name="nazwa" type="string" column="nazwa" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

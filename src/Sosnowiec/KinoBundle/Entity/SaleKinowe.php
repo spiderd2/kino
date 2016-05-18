@@ -13,6 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class SaleKinowe
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nazwa", type="string", length=45, nullable=false)
+     */
+    private $nazwa;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id_sale_kinowe", type="smallint")
@@ -22,6 +29,30 @@ class SaleKinowe
     private $idSaleKinowe;
 
 
+
+    /**
+     * Set nazwa
+     *
+     * @param string $nazwa
+     *
+     * @return SaleKinowe
+     */
+    public function setNazwa($nazwa)
+    {
+        $this->nazwa = $nazwa;
+
+        return $this;
+    }
+
+    /**
+     * Get nazwa
+     *
+     * @return string
+     */
+    public function getNazwa()
+    {
+        return $this->nazwa;
+    }
 
     /**
      * Get idSaleKinowe

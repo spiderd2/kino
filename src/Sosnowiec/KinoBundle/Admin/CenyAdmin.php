@@ -16,20 +16,24 @@ class CenyAdmin extends Admin
     }
     protected function configureFormFields(FormMapper $formMapper)
     {
-      
+      $formMapper->add('rodzaj')
+                ->add('cena')
+                ;
            
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper
-            
+        $datagridMapper->add('rodzaj')
+                ->add('cena')            
                 ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
+        $listMapper->add('rodzaj')
+                ->add('cena')
+                ;
             
            ;
     }

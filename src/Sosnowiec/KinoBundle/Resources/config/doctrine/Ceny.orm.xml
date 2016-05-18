@@ -12,10 +12,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="cena" type="string" column="cena" length="45" nullable="false">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
+    <field name="cena" type="decimal" column="cena" precision="10" scale="0" nullable="false"/>
   </entity>
 </doctrine-mapping>
