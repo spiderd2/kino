@@ -17,6 +17,7 @@ class SeanseAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('rozpoczecie')
+                ->add('zakonczenie')
                 ->add('saleKinoweSaleKinowe', 'entity', array(
             'class' => 'Sosnowiec\KinoBundle\Entity\SaleKinowe',
             'property' => 'idSaleKinowe',

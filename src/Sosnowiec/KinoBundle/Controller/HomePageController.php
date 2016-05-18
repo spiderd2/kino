@@ -2,6 +2,7 @@
 
 namespace Sosnowiec\KinoBundle\Controller;
 
+use Sosnowiec\KinoBundle\SosnowiecKinoBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -182,9 +183,15 @@ class HomePageController extends Controller {
      * 
      * @Template
      */
-    public function cennikAction() {
+    public function cennikAction() 
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $ticketPrices = $em->getRepository('SosnowiecKinoBundle:Ceny')->findAll();
        
-        return array();
+        return $this->render('SosnowiecKinoBundle:HomePage:cennik.html.twig', [
+            'ticketPrices' => $ticketPrices,
+        ]);
     }
     
      /**
