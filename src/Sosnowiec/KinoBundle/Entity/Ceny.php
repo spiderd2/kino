@@ -27,6 +27,13 @@ class Ceny
     private $cena;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="cena_weekend", type="decimal", precision=10, scale=0, nullable=false)
+     */
+    private $cenaWeekend;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="idceny", type="integer")
@@ -83,6 +90,30 @@ class Ceny
     public function getCena()
     {
         return $this->cena;
+    }
+
+    /**
+     * Set cenaWeekend
+     *
+     * @param string $cenaWeekend
+     *
+     * @return Ceny
+     */
+    public function setCenaWeekend($cenaWeekend)
+    {
+        $this->cenaWeekend = $cenaWeekend;
+
+        return $this;
+    }
+
+    /**
+     * Get cenaWeekend
+     *
+     * @return string
+     */
+    public function getCenaWeekend()
+    {
+        return $this->cenaWeekend;
     }
 
     /**

@@ -20,13 +20,6 @@ class Seanse
     private $rozpoczecie;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="zakonczenie", type="datetime", nullable=false)
-     */
-    private $zakonczenie;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id_seansu", type="integer")

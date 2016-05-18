@@ -13,5 +13,6 @@
       </options>
     </field>
     <field name="cena" type="decimal" column="cena" precision="10" scale="0" nullable="false"/>
+    <field name="cenaWeekend" type="decimal" column="cena_weekend" precision="10" scale="0" nullable="false"/>
   </entity>
 </doctrine-mapping>

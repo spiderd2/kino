@@ -7,17 +7,23 @@
             <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Resources/views/base.html.twig</file>
             <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Resources/views/HomePage/login.html.twig</file>
             <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Resources/views/Security/admin.html.twig</file>
-            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Entity/Uzytkownicy.php</file>
             <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Resources/views/HomePage/welcome.html.twig</file>
             <file>file:/C:/xampp1/htdocs/symfony/app/config/security.yml</file>
             <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Admin/UzytkownicyAdmin.php</file>
             <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Resources/views/HomePage/register.html.twig</file>
+            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Admin/FilmyAdmin.php</file>
+            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Admin/SaleKinoweAdmin.php</file>
             <file>file:/C:/xampp1/htdocs/symfony/app/config/routing.yml</file>
+            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Entity/SaleKinowe.php</file>
+            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Admin/SeanseAdmin.php</file>
             <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Controller/SecurityController.php</file>
             <file>file:/C:/xampp1/htdocs/symfony/app/config/services.yml</file>
+            <file>file:/C:/xampp1/htdocs/symfony/app/config/parameters.yml</file>
             <file>file:/C:/xampp1/htdocs/symfony/app/AppKernel.php</file>
-            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Entity/Rezerwacje.php</file>
+            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Admin/CenyAdmin.php</file>
             <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Controller/HomePageController.php</file>
+            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Admin/BiletyAdmin.php</file>
+            <file>file:/C:/xampp1/htdocs/symfony/src/Sosnowiec/KinoBundle/Admin/MiejscaAdmin.php</file>
             <file>file:/C:/xampp1/htdocs/symfony/app/config/config.yml</file>
         </group>
     </open-files>
