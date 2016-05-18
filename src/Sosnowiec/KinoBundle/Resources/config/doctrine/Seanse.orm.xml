@@ -12,7 +12,6 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="rozpoczecie" type="datetime" column="rozpoczecie" nullable="false"/>
-    <field name="zakonczenie" type="datetime" column="zakonczenie" nullable="false"/>
     <many-to-one field="saleKinoweSaleKinowe" target-entity="SaleKinowe" fetch="LAZY">
       <join-columns>
         <join-column name="sale_kinowe_id_sale_kinowe" referenced-column-name="id_sale_kinowe"/>

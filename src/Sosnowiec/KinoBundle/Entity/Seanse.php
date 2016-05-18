@@ -20,13 +20,6 @@ class Seanse
     private $rozpoczecie;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="zakonczenie", type="datetime", nullable=false)
-     */
-    private $zakonczenie;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id_seansu", type="integer")
@@ -79,30 +72,6 @@ class Seanse
     public function getRozpoczecie()
     {
         return $this->rozpoczecie;
-    }
-
-    /**
-     * Set zakonczenie
-     *
-     * @param \DateTime $zakonczenie
-     *
-     * @return Seanse
-     */
-    public function setZakonczenie($zakonczenie)
-    {
-        $this->zakonczenie = $zakonczenie;
-
-        return $this;
-    }
-
-    /**
-     * Get zakonczenie
-     *
-     * @return \DateTime
-     */
-    public function getZakonczenie()
-    {
-        return $this->zakonczenie;
     }
 
     /**

@@ -27,6 +27,13 @@ class Ceny
     private $cena;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="cena_weekend", type="decimal", precision=10, scale=0, nullable=false)
+     */
+    private $cenaWeekend;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="idceny", type="integer")

@@ -1,0 +1,53 @@
+<?php
+
+namespace Sosnowiec\KinoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MiejscaZajete
+ *
+ * @ORM\Table(name="miejsca_zajete", uniqueConstraints={@ORM\UniqueConstraint(name="idmiejsca_zajete_UNIQUE", columns={"idmiejsca_zajete"})}, indexes={@ORM\Index(name="fk_miejsca_zajete_seanse1_idx", columns={"seanse_id_seansu"}), @ORM\Index(name="fk_miejsca_zajete_miejsca1_idx", columns={"miejsca_id_miejsca"})})
+ * @ORM\Entity
+ */
+class MiejscaZajete
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="zajete", type="boolean", nullable=true)
+     */
+    private $zajete;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idmiejsca_zajete", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idmiejscaZajete;
+
+    /**
+     * @var \Sosnowiec\KinoBundle\Entity\Seanse
+     *
+     * @ORM\ManyToOne(targetEntity="Sosnowiec\KinoBundle\Entity\Seanse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="seanse_id_seansu", referencedColumnName="id_seansu")
+     * })
+     */
+    private $seanseSeansu;
+
+    /**
+     * @var \Sosnowiec\KinoBundle\Entity\Miejsca
+     *
+     * @ORM\ManyToOne(targetEntity="Sosnowiec\KinoBundle\Entity\Miejsca")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="miejsca_id_miejsca", referencedColumnName="id_miejsca")
+     * })
+     */
+    private $miejscaMiejsca;
+
+
+}
+

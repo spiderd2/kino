@@ -17,7 +17,7 @@ class Rezerwacje
      *
      * @ORM\Column(name="data_rezerwacji", type="datetime", nullable=false)
      */
-    private $dataRezerwacji = 'CURRENT_TIMESTAMP(6)';
+    private $dataRezerwacji = 'CURRENT_TIMESTAMP';
 
     /**
      * @var integer

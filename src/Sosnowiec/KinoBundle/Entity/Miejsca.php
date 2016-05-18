@@ -15,14 +15,14 @@ class Miejsca
     /**
      * @var integer
      *
-     * @ORM\Column(name="rzad", type="integer", nullable=true)
+     * @ORM\Column(name="rzad", type="integer", nullable=false)
      */
     private $rzad;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="miejsce", type="integer", nullable=true)
+     * @ORM\Column(name="miejsce", type="integer", nullable=false)
      */
     private $miejsce;
 
