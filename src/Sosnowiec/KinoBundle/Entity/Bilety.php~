@@ -52,5 +52,86 @@ class Bilety
     private $cenyceny;
 
 
-}
 
+    /**
+     * Get idBiletu
+     *
+     * @return integer
+     */
+    public function getIdBiletu()
+    {
+        return $this->idBiletu;
+    }
+
+    /**
+     * Set rezerwacjeRezerwacji
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Rezerwacje $rezerwacjeRezerwacji
+     *
+     * @return Bilety
+     */
+    public function setRezerwacjeRezerwacji(\Sosnowiec\KinoBundle\Entity\Rezerwacje $rezerwacjeRezerwacji = null)
+    {
+        $this->rezerwacjeRezerwacji = $rezerwacjeRezerwacji;
+
+        return $this;
+    }
+
+    /**
+     * Get rezerwacjeRezerwacji
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Rezerwacje
+     */
+    public function getRezerwacjeRezerwacji()
+    {
+        return $this->rezerwacjeRezerwacji;
+    }
+
+    /**
+     * Set miejscaMiejsca
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Miejsca $miejscaMiejsca
+     *
+     * @return Bilety
+     */
+    public function setMiejscaMiejsca(\Sosnowiec\KinoBundle\Entity\Miejsca $miejscaMiejsca = null)
+    {
+        $this->miejscaMiejsca = $miejscaMiejsca;
+
+        return $this;
+    }
+
+    /**
+     * Get miejscaMiejsca
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Miejsca
+     */
+    public function getMiejscaMiejsca()
+    {
+        return $this->miejscaMiejsca;
+    }
+
+    /**
+     * Set cenyceny
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Ceny $cenyceny
+     *
+     * @return Bilety
+     */
+    public function setCenyceny(\Sosnowiec\KinoBundle\Entity\Ceny $cenyceny = null)
+    {
+        $this->cenyceny = $cenyceny;
+
+        return $this;
+    }
+
+    /**
+     * Get cenyceny
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Ceny
+     */
+    public function getCenyceny()
+    {
+        return $this->cenyceny;
+    }
+}

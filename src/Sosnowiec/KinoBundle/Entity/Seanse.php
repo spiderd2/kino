@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Seanse
  *
  * @ORM\Table(name="seanse", uniqueConstraints={@ORM\UniqueConstraint(name="idseanse_UNIQUE", columns={"id_seansu"})}, indexes={@ORM\Index(name="fk_seanse_filmy1_idx", columns={"filmy_id_filmu"}), @ORM\Index(name="fk_seanse_sale_kinowe1_idx", columns={"sale_kinowe_id_sale_kinowe"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Sosnowiec\KinoBundle\Entity\SeanseRepository")
  */
 class Seanse
 {

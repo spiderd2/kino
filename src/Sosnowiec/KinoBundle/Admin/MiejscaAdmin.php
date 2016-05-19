@@ -44,9 +44,13 @@ class MiejscaAdmin extends Admin
                 ->add('rzad')
                 ->add('miejsce')
                 ->add('saleKinoweSaleKinowe.nazwa', null, array('label' => 'Sala'))
-            
-            
-           ;
+                ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'show' => array(),
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                ));
     }
 }
 ?>

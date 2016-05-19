@@ -49,7 +49,13 @@ class UzytkownicyAdmin extends Admin
             ->add('imie', 'text')
             ->add('nazwisko', 'text')
             ->add('telefon', 'text')
-           ;
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ));
     }
 }
 ?>

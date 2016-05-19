@@ -31,11 +31,16 @@ class CenyAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->add('rodzaj')
-                ->add('cena')
-                ;
-            
-           ;
+        $listMapper
+            ->add('rodzaj')
+            ->add('cena')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ));
     }
 }
 ?>

@@ -49,5 +49,86 @@ class Rezerwacje
     private $seanseSeansu;
 
 
-}
 
+    /**
+     * Set dataRezerwacji
+     *
+     * @param \DateTime $dataRezerwacji
+     *
+     * @return Rezerwacje
+     */
+    public function setDataRezerwacji($dataRezerwacji)
+    {
+        $this->dataRezerwacji = $dataRezerwacji;
+
+        return $this;
+    }
+
+    /**
+     * Get dataRezerwacji
+     *
+     * @return \DateTime
+     */
+    public function getDataRezerwacji()
+    {
+        return $this->dataRezerwacji;
+    }
+
+    /**
+     * Get idRezerwacji
+     *
+     * @return integer
+     */
+    public function getIdRezerwacji()
+    {
+        return $this->idRezerwacji;
+    }
+
+    /**
+     * Set uzytkownicyUzytkownika
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Uzytkownicy $uzytkownicyUzytkownika
+     *
+     * @return Rezerwacje
+     */
+    public function setUzytkownicyUzytkownika(\Sosnowiec\KinoBundle\Entity\Uzytkownicy $uzytkownicyUzytkownika = null)
+    {
+        $this->uzytkownicyUzytkownika = $uzytkownicyUzytkownika;
+
+        return $this;
+    }
+
+    /**
+     * Get uzytkownicyUzytkownika
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Uzytkownicy
+     */
+    public function getUzytkownicyUzytkownika()
+    {
+        return $this->uzytkownicyUzytkownika;
+    }
+
+    /**
+     * Set seanseSeansu
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Seanse $seanseSeansu
+     *
+     * @return Rezerwacje
+     */
+    public function setSeanseSeansu(\Sosnowiec\KinoBundle\Entity\Seanse $seanseSeansu = null)
+    {
+        $this->seanseSeansu = $seanseSeansu;
+
+        return $this;
+    }
+
+    /**
+     * Get seanseSeansu
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Seanse
+     */
+    public function getSeanseSeansu()
+    {
+        return $this->seanseSeansu;
+    }
+}

@@ -49,5 +49,86 @@ class Seanse
     private $filmyFilmu;
 
 
-}
 
+    /**
+     * Set rozpoczecie
+     *
+     * @param \DateTime $rozpoczecie
+     *
+     * @return Seanse
+     */
+    public function setRozpoczecie($rozpoczecie)
+    {
+        $this->rozpoczecie = $rozpoczecie;
+
+        return $this;
+    }
+
+    /**
+     * Get rozpoczecie
+     *
+     * @return \DateTime
+     */
+    public function getRozpoczecie()
+    {
+        return $this->rozpoczecie;
+    }
+
+    /**
+     * Get idSeansu
+     *
+     * @return integer
+     */
+    public function getIdSeansu()
+    {
+        return $this->idSeansu;
+    }
+
+    /**
+     * Set saleKinoweSaleKinowe
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\SaleKinowe $saleKinoweSaleKinowe
+     *
+     * @return Seanse
+     */
+    public function setSaleKinoweSaleKinowe(\Sosnowiec\KinoBundle\Entity\SaleKinowe $saleKinoweSaleKinowe = null)
+    {
+        $this->saleKinoweSaleKinowe = $saleKinoweSaleKinowe;
+
+        return $this;
+    }
+
+    /**
+     * Get saleKinoweSaleKinowe
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\SaleKinowe
+     */
+    public function getSaleKinoweSaleKinowe()
+    {
+        return $this->saleKinoweSaleKinowe;
+    }
+
+    /**
+     * Set filmyFilmu
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Filmy $filmyFilmu
+     *
+     * @return Seanse
+     */
+    public function setFilmyFilmu(\Sosnowiec\KinoBundle\Entity\Filmy $filmyFilmu = null)
+    {
+        $this->filmyFilmu = $filmyFilmu;
+
+        return $this;
+    }
+
+    /**
+     * Get filmyFilmu
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Filmy
+     */
+    public function getFilmyFilmu()
+    {
+        return $this->filmyFilmu;
+    }
+}

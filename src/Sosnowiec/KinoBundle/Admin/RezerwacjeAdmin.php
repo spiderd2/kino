@@ -45,9 +45,13 @@ class RezerwacjeAdmin extends Admin
                 ->add('seanseSeansu.filmyFilmu.tytul', null, array('label' => 'Tytuł filmu'))
                 ->add('seanseSeansu.rozpoczecie', null, array('label' => 'Data i godzina seansu'))
                 ->add('seanseSeansu.saleKinoweSaleKinowe.nazwa', null, array('label' => 'Sala'))
-                ;
-        
-        
+                ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'show' => array(),
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                 ));
     }
 }
 ?>

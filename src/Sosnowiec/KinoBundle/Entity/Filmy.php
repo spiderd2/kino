@@ -19,6 +19,15 @@ class Filmy
      */
     private $tytul;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", nullable=false, unique=true)
+     */
+    private $url;
+
+
     /**
      * @var integer
      *
@@ -93,5 +102,21 @@ class Filmy
     public function getIdFilmu()
     {
         return $this->idFilmu;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
     }
 }

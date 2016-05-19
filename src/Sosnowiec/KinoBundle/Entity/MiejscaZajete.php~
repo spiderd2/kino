@@ -49,5 +49,86 @@ class MiejscaZajete
     private $miejscaMiejsca;
 
 
-}
 
+    /**
+     * Set zajete
+     *
+     * @param boolean $zajete
+     *
+     * @return MiejscaZajete
+     */
+    public function setZajete($zajete)
+    {
+        $this->zajete = $zajete;
+
+        return $this;
+    }
+
+    /**
+     * Get zajete
+     *
+     * @return boolean
+     */
+    public function getZajete()
+    {
+        return $this->zajete;
+    }
+
+    /**
+     * Get idmiejscaZajete
+     *
+     * @return integer
+     */
+    public function getIdmiejscaZajete()
+    {
+        return $this->idmiejscaZajete;
+    }
+
+    /**
+     * Set seanseSeansu
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Seanse $seanseSeansu
+     *
+     * @return MiejscaZajete
+     */
+    public function setSeanseSeansu(\Sosnowiec\KinoBundle\Entity\Seanse $seanseSeansu = null)
+    {
+        $this->seanseSeansu = $seanseSeansu;
+
+        return $this;
+    }
+
+    /**
+     * Get seanseSeansu
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Seanse
+     */
+    public function getSeanseSeansu()
+    {
+        return $this->seanseSeansu;
+    }
+
+    /**
+     * Set miejscaMiejsca
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\Miejsca $miejscaMiejsca
+     *
+     * @return MiejscaZajete
+     */
+    public function setMiejscaMiejsca(\Sosnowiec\KinoBundle\Entity\Miejsca $miejscaMiejsca = null)
+    {
+        $this->miejscaMiejsca = $miejscaMiejsca;
+
+        return $this;
+    }
+
+    /**
+     * Get miejscaMiejsca
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\Miejsca
+     */
+    public function getMiejscaMiejsca()
+    {
+        return $this->miejscaMiejsca;
+    }
+}

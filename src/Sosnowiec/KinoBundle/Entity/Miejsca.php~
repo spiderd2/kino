@@ -46,5 +46,86 @@ class Miejsca
     private $saleKinoweSaleKinowe;
 
 
-}
 
+    /**
+     * Set rzad
+     *
+     * @param integer $rzad
+     *
+     * @return Miejsca
+     */
+    public function setRzad($rzad)
+    {
+        $this->rzad = $rzad;
+
+        return $this;
+    }
+
+    /**
+     * Get rzad
+     *
+     * @return integer
+     */
+    public function getRzad()
+    {
+        return $this->rzad;
+    }
+
+    /**
+     * Set miejsce
+     *
+     * @param integer $miejsce
+     *
+     * @return Miejsca
+     */
+    public function setMiejsce($miejsce)
+    {
+        $this->miejsce = $miejsce;
+
+        return $this;
+    }
+
+    /**
+     * Get miejsce
+     *
+     * @return integer
+     */
+    public function getMiejsce()
+    {
+        return $this->miejsce;
+    }
+
+    /**
+     * Get idMiejsca
+     *
+     * @return integer
+     */
+    public function getIdMiejsca()
+    {
+        return $this->idMiejsca;
+    }
+
+    /**
+     * Set saleKinoweSaleKinowe
+     *
+     * @param \Sosnowiec\KinoBundle\Entity\SaleKinowe $saleKinoweSaleKinowe
+     *
+     * @return Miejsca
+     */
+    public function setSaleKinoweSaleKinowe(\Sosnowiec\KinoBundle\Entity\SaleKinowe $saleKinoweSaleKinowe = null)
+    {
+        $this->saleKinoweSaleKinowe = $saleKinoweSaleKinowe;
+
+        return $this;
+    }
+
+    /**
+     * Get saleKinoweSaleKinowe
+     *
+     * @return \Sosnowiec\KinoBundle\Entity\SaleKinowe
+     */
+    public function getSaleKinoweSaleKinowe()
+    {
+        return $this->saleKinoweSaleKinowe;
+    }
+}

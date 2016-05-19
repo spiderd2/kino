@@ -29,9 +29,15 @@ class SaleKinoweAdmin extends Admin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->add('nazwa');
-            
-           ;
+        $listMapper
+            ->add('nazwa')
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ));
     }
 }
 ?>
