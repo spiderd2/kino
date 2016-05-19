@@ -20,25 +20,46 @@
             border-radius: 25px;
             padding:10px;           
         }
-        
+        .table
+        {
+            background-color: #D8D8D8;
+            border-radius: 25px;
+            padding:10px;           
+        }
+        .table > tbody > tr > td,
+        .table > thead > tr > th
+        {
+            padding :18px;    
+            text-align: center;
+        }
+
     </style>
 {%endblock%}    
 
 
 {% block pageContent %}
     <div class="container">   
-        
-        <table border="1">
-            {% for entry in rows %}
-            <tr>
-                {# styl tylko na chwile #}
-                <td><img src="{{ entry.image}}" style="max-width: 100px"></td>
-                <td>{{ entry.rozpoczecie|date('d-m-Y H:i:s') }}</td>
-                <td>{{ entry.filmyFilmu.tytul }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        
+        <div class="col-md-6 col-md-offset-3">
+            <table class="table table-hover" >
+                <thead>
+                    <tr>
+                        <th>Plakat</th>
+                        <th>Data</th>
+                        <th>Tytuł</th>
+                    </tr>
+                </thead>
+                {% for entry in rows %}
+                    <tr>
+                        {# styl tylko na chwile #}
+                        <td><img src="{{ entry.image}}" style="max-width: 100px"></td>
+                        <td>{{ entry.rozpoczecie|date('d-m-Y') }}
+                            <br>
+                            {{ entry.rozpoczecie|date('H:i') }}</td>
+                        <td>{{ entry.filmyFilmu.tytul }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 
 {%endblock%}

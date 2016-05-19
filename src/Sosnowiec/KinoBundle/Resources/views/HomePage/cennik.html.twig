@@ -26,6 +26,12 @@
             border-radius: 25px;
             padding:10px;
         }
+        .table > tbody > tr > td,
+        .table > thead > tr > th
+        {
+            padding :18px;    
+            text-align: center;
+        }
     </style>
 {%endblock%}    
 
@@ -36,7 +42,7 @@
     {% endfor %}
     <div class="container">
 
-                <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -46,16 +52,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for ticketPrice in ticketPrices %}
-                    <tr>
-                        <td> {{ ticketPrice.rodzaj }}</td>
-                        <td>{{ ticketPrice.cena }}</td>
-                        <td>{{ ticketPrice.cena }}</td>
-                    </tr>
-                {% endfor %}
+                    {% for ticketPrice in ticketPrices %}
+                        <tr>
+                            <td> {{ ticketPrice.rodzaj }}</td>
+                            <td>{{ ticketPrice.cena }}</td>
+                            <td>{{ ticketPrice.cena }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
-            
+
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -86,9 +92,9 @@
             <br>
             Promocje studenci, seniorzy oraz bilet normalny po okazaniu legitymacji/dokumentu
             Dodatkowe promocje:
-        grupa od 8 osób: każda osoba 2zł taniej
+            grupa od 8 osób: każda osoba 2zł taniej
         </div>
-        
+
     </div>
 
 {%endblock%}

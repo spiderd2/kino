@@ -48,25 +48,25 @@
         <form id="form" class="" method="POST" action="{{path('sosnowiec_kino_register')}}" data-validate="parsley">
             <h2>Rejestracja</h2>
             <!--<label>Nazwa uzytkownika</label>-->
-            <input type="text" name="login" class="input-lg"  placeholder="Nazwa użytkownika" data-parsley-reguired="true" data-parsley-type="text"/>
+            <input type="text" name="login" class="input-lg"  placeholder="Nazwa użytkownika" data-parsley-required="true" data-parsley-type="text"/>
             <br/>
             {#<label>Imię</label>#}
-            <input type="text" name="imie" class="input-lg" placeholder="Imię"  data-parsley-trigger="change" data-parsley-reguired="true" data-parsley-type="text"/>
+            <input type="text" name="imie" class="input-lg" placeholder="Imię"  data-parsley-trigger="change" data-parsley-required="true" data-parsley-type="text"/>
             <br/>
            {# <label>Nazwisko</label>#}
-            <input type="text" name="nazwisko" class="input-lg" placeholder="Nazwisko"  data-parsley-trigger="change" data-parsley-reguired="true" data-parsley-type="text"/>
+            <input type="text" name="nazwisko" class="input-lg" placeholder="Nazwisko"  data-parsley-trigger="change" data-parsley-required="true" data-parsley-type="text"/>
             <br/>
             {#<label>Email</label>#}
-            <input type="email" name="email" class="input-lg" placeholder="Email" data-parsley-trigger="change" data-parsley-reguired="true" data-parsley-type="email"/>
+            <input type="email" name="email" class="input-lg" placeholder="Email" data-parsley-trigger="change" data-parsley-required="true" data-parsley-type="email"/>
             <br/>
             {#<label>Hasło</label>#}
-            <input id="pass" type="password"  name="haslo" class="input-lg" placeholder="Hasło" data-parsley-trigger="change" data-parsley-reguired="true" data-parsley-type="text"/>
+            <input id="pass" type="password"  name="haslo" class="input-lg" placeholder="Hasło" data-parsley-trigger="change" data-parsley-required="true" data-parsley-type="text"/>
             <br/>
             {#<label>Powtórz Hasło</label>#}
-            <input id="passRe" type="password" class="input-lg" placeholder="Powtórz hasło" data-parsley-trigger="change" data-parsley-reguired="true" data-equalto="#pass" />
+            <input id="passRe" type="password" class="input-lg" placeholder="Powtórz hasło" data-parsley-trigger="change" data-parsley-required="true" data-equalto="#pass" />
             <br/>
             {#<label>Telefon</label>#}
-            <input  name="telefon" class="input-lg" placeholder="Telefon" data-trigger="change" data-parsley-reguired="true" data-type="digits" data-parsley-minlength="6" data-parsley-minlength-message="min six number" data-parsley-type="digits" data-parsley-type-message="only numbers"/><br><br>
+            <input  name="telefon" class="input-lg" placeholder="Telefon" data-trigger="change" data-parsley-required="true" data-type="digits" data-parsley-minlength="6" data-parsley-minlength-message="min six number" data-parsley-type="digits" data-parsley-type-message="only numbers"/><br><br>
             <div>
                 <button class="btn btn-primary" type="submit"> Stwórz konto</button>              
             </div>
