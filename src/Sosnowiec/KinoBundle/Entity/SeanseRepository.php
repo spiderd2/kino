@@ -17,8 +17,12 @@ class SeanseRepository extends EntityRepository
         $query = $this->createQueryBuilder('s')
             ->join('s.filmyFilmu', 'f')
             ->groupBy('f.tytul')
+            ->where('s.rozpoczecie <= :date')
+            ->andWhere('s.rozpoczecie >= :now')
+            ->setParameter('date', new \DateTime('+7 days'))
+            ->setParameter('now', new \DateTime('now'))
             ->getQuery();
-
+        
         return $query->getResult();
     }
 }

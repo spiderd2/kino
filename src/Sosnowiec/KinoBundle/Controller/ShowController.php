@@ -36,4 +36,25 @@ class ShowController extends Controller {
             'rows' => $rows
         ));
     }
+
+
+    /**
+     * @Route(
+     *     "/repertuar/{id}",
+     *      name="sosnowiec_kino_repertuar_film")
+     *
+     * @Template
+     */
+    public function repertuarFilmuAction($id) {
+
+        $filmweb = Filmweb::instance();
+
+
+        $em = $this->getDoctrine()->getManager();
+        $movie= $em->getRepository('SosnowiecKinoBundle:Seanse')->findOneByidSeansu($id);
+
+        return $this->render("SosnowiecKinoBundle:Show:repertuarFilmu.html.twig", array(
+            'movie' => $movie
+        ));
+    }
 }
