@@ -33,7 +33,10 @@
                     <li> <a href="{{path('sosnowiec_kino_index')}}">Strona główna</a> </li>
                     <li> <a href="{{path('sosnowiec_kino_repertuar')}}">Repertuar</a> </li>
                     <li> <a href="{{path('sosnowiec_kino_cennik')}}">Cennik</a> </li>
-                    <li> <a href="{{path('sosnowiec_kino_kontakt')}}">Kontakt</a>    </li>   
+                    <li> <a href="{{path('sosnowiec_kino_kontakt')}}">Kontakt</a>    </li>
+                    {% if app.session.get('id') is not empty %}
+                     <li> <a href="{{ path('sosnowiec_kino_rezerwacje', {'id': app.session.get('id')}) }}">Moje rezerwacje</a> </li>{#<li> <a href="{{path('sosnowiec_kino_rezerwacje', { 'id': app.session.get('id') })}}">Rezerwacje</a>    </li>#}
+                    {% endif %}
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li><a href="{{path('logout')}}">Wyloguj, {{ app.user.username }}</a></li> 
                     {%else%}  
@@ -42,6 +45,7 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <li> <a href="{{path('sonata_admin_dashboard')}}">ADMIN PANEL</a></li>
                     {%endif%}
+                    
                 </ul>
             </div>
         </nav>

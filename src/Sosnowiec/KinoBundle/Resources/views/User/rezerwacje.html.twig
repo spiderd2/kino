@@ -11,7 +11,27 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+    <style>
+        .container
+        {
+            background-color: white;
+            border-radius: 25px;
+            padding:10px;           
+        }
+        .table
+        {
+            background-color: #D8D8D8;
+            border-radius: 25px;
+            padding:10px;           
+        }
+        .table > tbody > tr > td
+        {#,.table > thead > tr > th#}
+        {
+            padding :18px;    
+            text-align: center;
+        }
+
+    </style>
 {%endblock%}    
 
 
@@ -19,21 +39,28 @@
     <div class="container">   
         <div class="col-md-6 col-md-offset-3">
             <table class="table table-hover" >
-                {#<thead>
+                <thead>
                     <tr>
-                        <th>Plakat</th>
+                        <th>Data rezerwacji</th>
+                        <th>Film</th>
                         <th>Tytuł</th>
+                        <th>Rozpoczecie</th>
+                        <th>Ilość kupionych biletów</th>
                     </tr>
-                </thead>#}
+                </thead>
                 {% for entry in rezerwacje %}
                     <tr>
                         {# styl tylko na chwile #}
-                        <td><img src="{{ entry.image}}" style="max-width: 100px"></td>
+                        
                      {#   <td>{{ entry.rozpoczecie|date('d-m-Y') }}
                        
                             {{ entry.rozpoczecie }}</td>#}
+                     <td>{{ entry.dataRezerwacji|date('d-m-Y') }}</td>
+                     <td><img src="{{ entry.image}}" style="max-width: 100px"></td>
                         <td>{{ entry.seanseSeansu.filmyFilmu.tytul }}</td>
-                        <td>{{ entry.seanseSeansu.rozpoczecie|date('d-m-Y') }}</td>
+                        <td>{{ entry.seanseSeansu.rozpoczecie|date('d-m-Y H:i') }}</td>
+                        <td>{{ entry.ileBiletow }}</td>
+                        <td><a class="btn btn-sm btn-danger" href="{{ path('sosnowiec_kino_rezerwacje_usun', {'rezerwacja': entry.idRezerwacji}) }}">Usuń rekord</a></td>
                     </tr>
                 {% endfor %}
             </table>

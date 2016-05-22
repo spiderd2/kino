@@ -22,8 +22,12 @@ class HomePageController extends Controller {
      * 
      * @Template
      */
-    public function indexAction() {
-
+    public function indexAction(Request $request) {
+        if(NULL!=$this->getUser() && $this->getUser() instanceof Uzytkownicy){
+        $session = $request->getSession();
+        
+        $session->set('id', $this->getUser()->getIdUzytkownika());
+        }
         return array();
     }
 
@@ -35,6 +39,7 @@ class HomePageController extends Controller {
      */
     public function loginAction(Request $request) {
         $session = $request->getSession();
+        
         $authenticationUtils = $this->get('security.authentication_utils');
                 // get the login error if there is one
                 $error = $authenticationUtils->getLastAuthenticationError();
