@@ -26,8 +26,8 @@
             border-radius: 25px;
             padding:10px;           
         }
-        .table > tbody > tr > td,
-        .table > thead > tr > th
+        .table > tbody > tr > td
+        {#,.table > thead > tr > th#}
         {
             padding :18px;    
             text-align: center;
@@ -41,20 +41,19 @@
     <div class="container">   
         <div class="col-md-6 col-md-offset-3">
             <table class="table table-hover" >
-                <thead>
+                {#<thead>
                     <tr>
                         <th>Plakat</th>
-                        <th>Data</th>
                         <th>Tytuł</th>
                     </tr>
-                </thead>
+                </thead>#}
                 {% for entry in rows %}
                     <tr>
                         {# styl tylko na chwile #}
                         <td><img src="{{ entry.image}}" style="max-width: 100px"></td>
-                        <td>{{ entry.rozpoczecie|date('d-m-Y') }}
-                            <br>
-                            {{ entry.rozpoczecie|date('H:i') }}</td>
+                     {#   <td>{{ entry.rozpoczecie|date('d-m-Y') }}
+                       
+                            {{ entry.rozpoczecie|date('H:i') }}</td>#}
                         <td>{{ entry.filmyFilmu.tytul }}</td>
                     </tr>
                 {% endfor %}
