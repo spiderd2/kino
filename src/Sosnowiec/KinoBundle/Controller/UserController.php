@@ -20,6 +20,25 @@ class UserController extends Controller {
      */
     public function rezerwacjeAction($id) {
 
+       
+        
+        if(NULL!=$this->getUser() && $this->getUser() instanceof \Sosnowiec\KinoBundle\Entity\Uzytkownicy ){
+              if($this->getUser()->getIdUzytkownika()!=$id){
+               //throw $this->createAccessDeniedException();   
+              }  
+            
+              
+        }
+        else{
+            throw $this->createAccessDeniedException();
+        }
+        
+        
+         
+        
+    
+        
+        
         $em = $this->getDoctrine()->getManager();
         $rezerwacje = $em->getRepository('SosnowiecKinoBundle:Rezerwacje')->findByuzytkownicyUzytkownika($id);
 
