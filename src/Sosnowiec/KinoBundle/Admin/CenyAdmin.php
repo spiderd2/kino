@@ -18,6 +18,7 @@ class CenyAdmin extends Admin
     {
       $formMapper->add('rodzaj')
                 ->add('cena')
+              ->add('cenaWeekend')
                 ;
            
     }
@@ -25,7 +26,8 @@ class CenyAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('rodzaj')
-                ->add('cena')            
+                ->add('cena') 
+                ->add('cenaWeekend')
                 ;
     }
 
@@ -34,6 +36,7 @@ class CenyAdmin extends Admin
         $listMapper
             ->add('rodzaj')
             ->add('cena')
+                ->add('cenaWeekend')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

@@ -1,0 +1,47 @@
+{% extends "SosnowiecKinoBundle::base.html.twig"%}
+
+{% block pageTitle %}
+    Strona główna | {{parent()}}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+{%endblock%}    
+
+
+{% block pageContent %}
+    <div class="container">   
+        <div class="col-md-6 col-md-offset-3">
+            <table class="table table-hover" >
+                {#<thead>
+                    <tr>
+                        <th>Plakat</th>
+                        <th>Tytuł</th>
+                    </tr>
+                </thead>#}
+                {% for entry in rezerwacje %}
+                    <tr>
+                        {# styl tylko na chwile #}
+                        <td><img src="{{ entry.image}}" style="max-width: 100px"></td>
+                     {#   <td>{{ entry.rozpoczecie|date('d-m-Y') }}
+                       
+                            {{ entry.rozpoczecie }}</td>#}
+                        <td>{{ entry.seanseSeansu.filmyFilmu.tytul }}</td>
+                        <td>{{ entry.seanseSeansu.rozpoczecie|date('d-m-Y') }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{%endblock%}
+
+{% block javascripts %}
+    {{ parent() }}
+{%endblock%} {# empty Twig template #}
