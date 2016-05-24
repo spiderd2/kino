@@ -90,7 +90,7 @@ position:absolute;
                 <input id='elements' type="text" name="elements" >
                 <input type='text' name='id_uzytkownika' value='{{app.session.get('id')}}'>
                 <input type="text" name="id_seansu" value='{{id_seansu}}' >
-                <button class="btn btn-lg btn-primary" type="submit">Dalej</button>
+                <button id="button_submit" class="btn btn-lg btn-primary" type="submit">Dalej</button>
             </form>
     </div>
 
@@ -150,6 +150,7 @@ $(document).ready(function(){
 	
 	//dodawanie/usuwanie zaznaczen siedzen
 	$(".miejsce").click(function(){
+                
 		if(!$(this).hasClass("zajete")){
         	//dodajemy miejsce
 			if(!$(this).hasClass("zaznaczone")){
@@ -168,12 +169,17 @@ $(document).ready(function(){
 				ile_biletow--;
 			}
                   $('#elements').val(wybrane);
-			
+		if($('#elements').val().trim()!=""){
+                    $('#button_submit').attr("disabled", false);
+                }
+                else{
+                    $('#button_submit').attr("disabled", true);
+                }	
 		}
     });
 
 
-
+$('#button_submit').attr("disabled", true);
    
 });
 </script>

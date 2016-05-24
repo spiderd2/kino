@@ -36,13 +36,15 @@ security:
             form_login:
                 login_path: sosnowiec_kino_login
                 check_path: sosnowiec_kino_login
-                default_target_path: /
+                default_target_path: sosnowiec_kino_index
+                always_use_default_target_path: true
             logout:
                 path:   /logout
                 target: /
             
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }    
+        - { path: ^/admin, roles: ROLE_ADMIN }  
+        - { path: ^/book, roles: ROLE_USER } 
             # activate different ways to authenticate
 
             # http_basic: ~

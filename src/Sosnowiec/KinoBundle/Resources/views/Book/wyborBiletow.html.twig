@@ -91,7 +91,7 @@
                         <td>
                             <select class='ceny'>
                                 {% for entry in ceny %}                       
-                                    <option class="opcja" value="{{entry.koszt}}" rodzaj="{{entry.rodzaj}}">{{entry.rodzaj}}-{{entry.koszt}}zł</option>
+                                    <option class="opcja" value="{{entry.koszt}}" id_ceny="{{entry.id_ceny}}" rodzaj="{{entry.rodzaj}}">{{entry.rodzaj}}-{{entry.koszt}}zł</option>
                                 {% endfor %}
                             </select>
                         </td>
@@ -104,6 +104,14 @@
             <textarea id="textarea">
                 
             </textarea>
+            <form method="POST" action="{{path('sosnowiec_kino_book_confirm')}}" >
+                
+                
+                <input id="json" type="text"  name="json">
+                
+                <button class="btn btn-lg btn-primary" type="submit">Rezerwuj</button>
+                
+            </form>
         </div>
         {{rezerwacja}}
     </div>
@@ -126,12 +134,14 @@
                     suma += parseInt($(this).val());
                 });
                 $('#wynik').html(suma + " zł");
-                text = '{"id_rezerwacji": "{{rezerwacja}}",' +
+                text = '{"id_seansu": "{{id_seansu}}",' +
+                        '"id_rezerwacji": "{{rezerwacja}}",' +
                         '"bilety": [';
                 $(".wiersz").each(function () {
                     text += '{';
                     text += '"id_miejsca": "' + $(this).find('.id_miejsca').html() + '",';
                     text += '"cena": "' + $(this).find('.ceny').val() + '",';
+                    text += '"id_ceny": "' + $(this).find('option:selected').attr('id_ceny') +'",';
                     text += '"rodzaj": "' + $(this).find('option:selected').attr('rodzaj') +'"';
                     text += '},';
                 });
@@ -140,11 +150,13 @@
                         '}';
 
                 $('#textarea').val(text);
-                alert(text);
+                $('#json').val(text);
+                
+               
 
             });
             $('#wynik').html(suma + " zł");
-
+            
 
             var text = '{"id_rezerwacji": "{{rezerwacja}}",' +
                         '"bilety": [';
@@ -152,6 +164,7 @@
                     text += '{';
                     text += '"id_miejsca": "' + $(this).find('.id_miejsca').html() + '",';
                     text += '"cena": "' + $(this).find('.ceny').val() + '",';
+                    text += '"id_ceny": "' + $(this).find('option:selected').attr('id_ceny') +'",';
                     text += '"rodzaj": "' + $(this).find('option:selected').attr('rodzaj') +'"';
                     text += '},';
                 });
@@ -159,7 +172,7 @@
                 text += ']' +
                         '}';
 
-
+$(".ceny").change();
         });
     </script>
 
