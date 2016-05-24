@@ -1,0 +1,166 @@
+{% extends "SosnowiecKinoBundle::base.html.twig"%}
+
+{% block pageTitle %}
+    Strona główna | {{parent()}}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        #wybor_siedzen{
+            height:500px;
+            width:500px;
+            background-color:rgb(221,221,221);
+            border-radius: 4px; 
+            -moz-border-radius: 4px; 
+            -webkit-border-radius: 4px; 
+            border: 0px outset #800000;
+            position:relative;
+
+
+        }
+        .miejsce {
+
+            background-color: rgb(255,255,255); 
+            color: black;
+            border: none;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            position:absolute;
+
+            border-radius: 4px; 
+            -moz-border-radius: 4px; 
+            -webkit-border-radius: 4px; 
+            border: 0px outset #800000;
+
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+        .miejsce:hover {
+            box-shadow: 0 4px 10px 0 rgba(0,0,0,0.24), 0 8px 20px 0 rgba(0,0,0,0.19);
+        }
+        .zajete{
+            background-color: #f44336; /* Red */
+            cursor: not-allowed;
+        }
+        .zaznaczone{
+            background-color: #4CAF50; /* Green */
+        }
+        #ekran{
+            border: #000 solid 4px;
+            color: white;
+            background-color: #000;
+            text-align:center;
+            border-radius: 4px; 
+            -moz-border-radius: 4px; 
+            -webkit-border-radius: 4px; 
+            position:absolute;
+
+
+        }
+        .nr_rzedu{
+            position:absolute;
+        }
+    </style>
+{%endblock%}    
+
+
+{% block pageContent %}
+    <div class="container">  
+        <div class="col-md-6 col-md-offset-3">
+            <table class="table table-hover" >
+                <thead>
+                    <tr>
+                        <th>Nr biletu</th>
+                        <th>Rodzaj</th>          
+                    </tr>
+                </thead>
+                {%set mscarr =miejsca|split(',')%}
+                {% for msc in mscarr %}
+                    <tr class="wiersz">
+                        <td class="id_miejsca">{{msc}}</td>
+                        <td>
+                            <select class='ceny'>
+                                {% for entry in ceny %}                       
+                                    <option class="opcja" value="{{entry.koszt}}" rodzaj="{{entry.rodzaj}}">{{entry.rodzaj}}-{{entry.koszt}}zł</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    {% endfor %}
+
+                </tr>
+
+            </table>
+            <span id='wynik'> WYNIK</span>
+            <textarea id="textarea">
+                
+            </textarea>
+        </div>
+        {{rezerwacja}}
+    </div>
+
+{%endblock%}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var suma = 0;
+        $(document).ready(function () {
+            //sumowanie ceny
+            $(".ceny").each(function () {
+                suma += parseInt($(this).val());
+            });
+
+            $(".ceny").change(function () {
+                suma = 0;
+                $(".ceny").each(function () {
+                    suma += parseInt($(this).val());
+                });
+                $('#wynik').html(suma + " zł");
+                text = '{"id_rezerwacji": "{{rezerwacja}}",' +
+                        '"bilety": [';
+                $(".wiersz").each(function () {
+                    text += '{';
+                    text += '"id_miejsca": "' + $(this).find('.id_miejsca').html() + '",';
+                    text += '"cena": "' + $(this).find('.ceny').val() + '",';
+                    text += '"rodzaj": "' + $(this).find('option:selected').attr('rodzaj') +'"';
+                    text += '},';
+                });
+                text=text.slice(0,-1);
+                text += ']' +
+                        '}';
+
+                $('#textarea').val(text);
+                alert(text);
+
+            });
+            $('#wynik').html(suma + " zł");
+
+
+            var text = '{"id_rezerwacji": "{{rezerwacja}}",' +
+                        '"bilety": [';
+                $(".wiersz").each(function () {
+                    text += '{';
+                    text += '"id_miejsca": "' + $(this).find('.id_miejsca').html() + '",';
+                    text += '"cena": "' + $(this).find('.ceny').val() + '",';
+                    text += '"rodzaj": "' + $(this).find('option:selected').attr('rodzaj') +'"';
+                    text += '},';
+                });
+                text=text.slice(0,-1);
+                text += ']' +
+                        '}';
+
+
+        });
+    </script>
+
+{%endblock%} {# empty Twig template #}

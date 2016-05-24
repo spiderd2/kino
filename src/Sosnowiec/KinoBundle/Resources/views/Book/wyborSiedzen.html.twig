@@ -11,30 +11,171 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+ <style>
+#wybor_siedzen{
+	 height:500px;
+	width:500px;
+    background-color:rgb(221,221,221);
+    border-radius: 4px; 
+-moz-border-radius: 4px; 
+-webkit-border-radius: 4px; 
+border: 0px outset #800000;
+	position:relative;
+	
+ 
+	}
+.miejsce {
     
+	background-color: rgb(255,255,255); 
+	color: black;
+    border: none;
+    width: 30px;
+	height: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	position:absolute;
+    
+	border-radius: 4px; 
+-moz-border-radius: 4px; 
+-webkit-border-radius: 4px; 
+border: 0px outset #800000;
+    
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.miejsce:hover {
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.24), 0 8px 20px 0 rgba(0,0,0,0.19);
+}
+.zajete{
+	background-color: #f44336; /* Red */
+	cursor: not-allowed;
+	}
+.zaznaczone{
+	background-color: #4CAF50; /* Green */
+	}
+#ekran{
+	border: #000 solid 4px;
+	color: white;
+	background-color: #000;
+	text-align:center;
+	border-radius: 4px; 
+-moz-border-radius: 4px; 
+-webkit-border-radius: 4px; 
+position:absolute;
+
+	
+	}
+	.nr_rzedu{
+		position:absolute;
+		}
+</style>
 {%endblock%}    
 
 
 {% block pageContent %}
-    <div class="container">   
-        <table class="table table-hover" >
-                <thead>
-                    <tr>
-                        <th>Siedzenie</th>
-                        <th>Dostepne</th>
-                    </tr>
-                </thead>
-                {% for entry in miejsca %}
-                    <tr>
-                        <td>{{ entry.miejsce}}, {{ entry.rzad}}</td>
-                        <td>{{ entry.zajete }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
+    <div class="container">  
+        <center>
+        <div id='wybor_siedzen'>
+            <div id='ekran'>EKRAN</div>
+        
+            {% for entry in miejsca %}
+               <button idmiejsca='{{entry.idMiejsca}}' class="miejsce {%if entry.zajete == true%}zajete{%endif%}" miejsce="{{ entry.miejsce}}" rzad="{{ entry.rzad}}" ></button> 
+            {% endfor %}
+    	
+        </div>  
+        </center>
+            <form action="{{path('sosnowiec_kino_tickets')}}" method="post">
+                <input id='elements' type="text" name="elements" >
+                <input type='text' name='id_uzytkownika' value='{{app.session.get('id')}}'>
+                <input type="text" name="id_seansu" value='{{id_seansu}}' >
+                <button class="btn btn-lg btn-primary" type="submit">Dalej</button>
+            </form>
     </div>
 
 {%endblock%}
 
 {% block javascripts %}
     {{ parent() }}
+    <script>
+var szerokosc_miejsca=30;
+$(document).ready(function(){
+	var ile_poziomo=0;
+	var ile_pionowo=0;
+	var m_poziomy=35;
+	var m_pionowy=50;
+	var wybrane= [];
+	var max_biletow=10;
+	var ile_biletow=0;
+	var offset_pionowy=40;
+	var offset_poziomy=20;
+	
+	//liczenie, ile jest miejsc w max rzedow i max miejsc w rzedzie
+	$(".miejsce").each( function () {
+		if(parseInt($(this).attr('miejsce'))>ile_poziomo){
+			ile_poziomo=$(this).attr('miejsce');
+		}
+			
+		if(parseInt($(this).attr('rzad'))>ile_pionowo){
+			ile_pionowo=$(this).attr('rzad');
+		}	
+	});
+	
+	//dostosowanie szerokosci diva z siedzeniami
+	$('#wybor_siedzen').height(ile_pionowo*m_pionowy+offset_pionowy+50)
+				.width(offset_poziomy+ile_poziomo*m_poziomy+2*(m_poziomy-8+offset_poziomy));
+					
+	
+	
+	//cyfry oznaczajace nr rzedu
+	for(var i =1; i<=ile_pionowo; i++){
+		$('#wybor_siedzen').prepend("<span class='nr_rzedu'>"+i+"</span>");
+	};
+	$(".nr_rzedu").each( function () {
+  		$(this).css({ left: offset_poziomy+10, top: offset_pionowy+5+m_pionowy*parseInt($(this).html())});
+	});
+	
+
+	//ustawianie szerokosci ekranu
+	$('#ekran').css({left: m_poziomy-8+offset_poziomy, top: 20})
+				.width(ile_poziomo*(m_poziomy)) 
+	
+	
+	//rozkladanie siedzen na odpowiednie miejsca 
+	$(".miejsce").each( function () {
+  		$(this).css({ left: $(this).attr('miejsce') *m_poziomy+offset_poziomy, top: $(this).attr("rzad")*m_pionowy+offset_pionowy});
+		$(this).html($(this).attr('miejsce'));
+	});
+	
+	//dodawanie/usuwanie zaznaczen siedzen
+	$(".miejsce").click(function(){
+		if(!$(this).hasClass("zajete")){
+        	//dodajemy miejsce
+			if(!$(this).hasClass("zaznaczone")){
+                                wybrane.push($(this).attr('idmiejsca'))
+				//wybrane.push($(this).attr('miejsce').concat('_',$(this).attr('rzad')));
+				$(this).addClass("zaznaczone");
+				ile_biletow++;
+			}
+			//usuwamy miejsce
+			else{
+				var index = wybrane.indexOf($(this).attr('idmiejsca'));
+				if (index > -1) {
+                                    wybrane.splice(index, 1);
+				}
+				$(this).removeClass("zaznaczone");
+				ile_biletow--;
+			}
+                  $('#elements').val(wybrane);
+			
+		}
+    });
+
+
+
+   
+});
+</script>
+
 {%endblock%} {# empty Twig template #}

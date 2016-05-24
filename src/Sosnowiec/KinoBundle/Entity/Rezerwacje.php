@@ -2,6 +2,8 @@
 
 namespace Sosnowiec\KinoBundle\Entity;
 
+
+use Symfony\Component\Validator\Constraints\DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,15 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="rezerwacje", uniqueConstraints={@ORM\UniqueConstraint(name="id_rezerwacje_UNIQUE", columns={"id_rezerwacji"})}, indexes={@ORM\Index(name="fk_rezerwacje_uzytkownicy_idx", columns={"uzytkownicy_id_uzytkownika"}), @ORM\Index(name="fk_rezerwacje_seanse1_idx", columns={"seanse_id_seansu"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Rezerwacje
 {
     /**
      * @var \DateTime
-     *
+     * 
      * @ORM\Column(name="data_rezerwacji", type="datetime", nullable=false)
      */
-    private $dataRezerwacji = 'CURRENT_TIMESTAMP';
+    private $dataRezerwacji;
 
     /**
      * @var integer
@@ -48,8 +51,23 @@ class Rezerwacje
      */
     private $seanseSeansu;
 
-
-
+    
+    /**
+     * Now we tell doctrine that before we persist or update we call the updatedTimestamps() function.
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function updatedTimestamps()
+    {
+        if($this->getDataRezerwacji() == null)
+        {
+            $this->setDataRezerwacji(new \DateTime(date('Y-m-d H:i:s')));
+        }
+    }
+    
+    
+     
     /**
      * Set dataRezerwacji
      *

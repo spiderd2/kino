@@ -8,9 +8,81 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use nSolutions\Filmweb;
+use Sosnowiec\KinoBundle\Entity\Rezerwacje;
+use Sosnowiec\KinoBundle\Entity\Seanse;
 
 class BookController extends Controller {
-
+    
+    /**
+     * @Route(
+     *     "/book/tickets",
+     *      name="sosnowiec_kino_tickets")
+     *
+     * @Template
+     */
+    public function wyborBiletowAction(Request $request) {
+        
+        if ($request->getMethod() == 'POST') {
+            $elements = $request->get('elements');
+            //$elements = explode(',', $elements);//robi ze stringa tablice
+            $id_seansu = $request->get('id_seansu');
+            
+            $id_uzytkownika = $request->getSession()->get('id');
+            $em = $this->getDoctrine()->getManager();
+            $uzytkownik = $em->getRepository('SosnowiecKinoBundle:Uzytkownicy')->find($id_uzytkownika);
+            $seans = $em->getRepository('SosnowiecKinoBundle:Seanse')->find($id_seansu);
+            $seans->getRozpoczecie()->getTimeStamp();
+            
+           
+            $weekend =(date('N', $seans->getRozpoczecie()->getTimeStamp()) >= 5)?1:0;//jezeli to weekend - zwroc 1
+           
+            
+            
+            
+            
+            $Rezerwacja = new Rezerwacje();
+            $Rezerwacja->setUzytkownicyUzytkownika($uzytkownik);
+            $Rezerwacja->setSeanseSeansu($seans);
+            
+            //zabawa z cenami dzien roboczy/weekend
+            $ceny = $em->getRepository('SosnowiecKinoBundle:Ceny')->findAll();
+            if($weekend===1){
+                foreach($ceny as $cena){
+                    $cena->koszt=$cena->getCenaWeekend();
+                }
+            }
+            else{
+                foreach($ceny as $cena){
+                    $cena->koszt=$cena->getCena();
+                }
+                
+            }
+ 
+            //sprawdza poprawnosc tworzonej rezerwacji
+            $validator = $this->get('validator');
+            $errors = $validator->validate($Rezerwacja);
+            if (count($errors) > 0) {
+                return new Response(print_r($errors, true));
+            } else {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($Rezerwacja);
+                $em->flush();
+                $idRezerwacji=$Rezerwacja->getIdRezerwacji();
+                return $this->render("SosnowiecKinoBundle:Book:wyborBiletow.html.twig", array(
+                    'rezerwacja' => $idRezerwacji,
+                    'miejsca' => $elements, 
+                    'ceny' => $ceny
+                 ));
+            }
+            
+            return new Response("cos nie tak");
+            
+            
+        }
+         
+      
+    }
+    
     /**
      * @Route(
      *     "/book/{id_seansu}/",
@@ -30,8 +102,8 @@ class BookController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $seans = $em->getRepository('SosnowiecKinoBundle:Seanse')->find($id_seansu);
-        $idSaliKinowej=$seans->getSaleKinoweSaleKinowe();
-        $miejsca = $em->getRepository('SosnowiecKinoBundle:Miejsca')->findBysaleKinoweSaleKinowe($idSaliKinowej);
+        $idSali=$seans->getSaleKinoweSaleKinowe();
+        $miejsca = $em->getRepository('SosnowiecKinoBundle:Miejsca')->findBysaleKinoweSaleKinowe($idSali);
         $miejsca_zajete = $em->getRepository('SosnowiecKinoBundle:MiejscaZajete');
 
         //w tej petli dodajemy informacje o tym, czy miejsce jest zajete
@@ -55,7 +127,8 @@ class BookController extends Controller {
         }
 
         return $this->render("SosnowiecKinoBundle:Book:wyborSiedzen.html.twig", array(
-                    'miejsca' => $miejsca
+                    'miejsca' => $miejsca,
+                    'id_seansu' => $id_seansu
         ));
     }
 
