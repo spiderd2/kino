@@ -84,14 +84,15 @@ position:absolute;
                <button idmiejsca='{{entry.idMiejsca}}' class="miejsce {%if entry.zajete == true%}zajete{%endif%}" miejsce="{{ entry.miejsce}}" rzad="{{ entry.rzad}}" ></button> 
             {% endfor %}
     	
-        </div>  
-        </center>
+        </div> 
             <form action="{{path('sosnowiec_kino_tickets')}}" method="post">
-                <input id='elements' type="text" name="elements" >
-                <input type='text' name='id_uzytkownika' value='{{app.session.get('id')}}'>
-                <input type="text" name="id_seansu" value='{{id_seansu}}' >
+                <input id='elements' type="text" name="elements" hidden>
+                <input type='text' name='id_uzytkownika' value='{{app.session.get('id')}}' hidden>
+                <input type="text" name="id_seansu" value='{{id_seansu}}' hidden>
                 <button id="button_submit" class="btn btn-lg btn-primary" type="submit">Dalej</button>
             </form>
+        </center>
+            
     </div>
 
 {%endblock%}

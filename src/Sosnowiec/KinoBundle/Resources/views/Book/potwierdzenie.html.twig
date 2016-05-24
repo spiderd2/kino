@@ -21,9 +21,13 @@
         {{json.id_rezerwacji}}
         <br/>
         Bilety: 
+        {% set suma = 0 %} 
         {% for bilet in json.bilety %}                       
            {{bilet.id_miejsca}}- {{bilet.cena}}- {{bilet.rodzaj}}
+           {% set suma = suma + bilet.cena %}
         {% endfor %}
+        SUMA:
+        {{suma}}  
     </div>
 
 {%endblock%}

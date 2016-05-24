@@ -184,10 +184,14 @@ class BookController extends Controller {
 //    private $idmiejscaZajete;
 //    private $seanseSeansu;
 //    private $miejscaMiejsca;
-
+            
 
         $em = $this->getDoctrine()->getManager();
         $seans = $em->getRepository('SosnowiecKinoBundle:Seanse')->find($id_seansu);
+        if (!$seans) {
+                return new Response("Szanowny Panie Użytkowniku, nie uda Ci się nic zarezerwować, gdyż nie ma takiego seansu. ");
+            }
+        
         $idSali = $seans->getSaleKinoweSaleKinowe();
         $miejsca = $em->getRepository('SosnowiecKinoBundle:Miejsca')->findBysaleKinoweSaleKinowe($idSali);
         $miejsca_zajete = $em->getRepository('SosnowiecKinoBundle:MiejscaZajete');

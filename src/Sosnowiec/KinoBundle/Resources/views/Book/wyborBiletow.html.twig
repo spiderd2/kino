@@ -80,13 +80,17 @@
             <table class="table table-hover" >
                 <thead>
                     <tr>
+                        <th>Poz.</th>
                         <th>Nr biletu</th>
                         <th>Rodzaj</th>          
                     </tr>
                 </thead>
                 {%set mscarr =miejsca|split(',')%}
+                {%set licznik = 0 %}
                 {% for msc in mscarr %}
                     <tr class="wiersz">
+                        {%set licznik = licznik+1 %}
+                        <td>{{licznik}}</td>
                         <td class="id_miejsca">{{msc}}</td>
                         <td>
                             <select class='ceny'>
@@ -101,13 +105,11 @@
 
             </table>
             <span id='wynik'> WYNIK</span>
-            <textarea id="textarea">
-                
-            </textarea>
+            
             <form method="POST" action="{{path('sosnowiec_kino_book_confirm')}}" >
                 
                 
-                <input id="json" type="text"  name="json">
+                <input id="json" type="text"  name="json" hidden>
                 
                 <button class="btn btn-lg btn-primary" type="submit">Rezerwuj</button>
                 
@@ -149,7 +151,7 @@
                 text += ']' +
                         '}';
 
-                $('#textarea').val(text);
+               
                 $('#json').val(text);
                 
                
