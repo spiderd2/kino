@@ -37,9 +37,6 @@
 
 
 {% block pageContent %}
-    {% for ticketPrice in ticketPrices %}
-        {{ ticketPrice.rodzaj }} - {{ ticketPrice.cena }}
-    {% endfor %}
     <div class="container">
 
         <div class="col-md-6 col-md-offset-3">
@@ -56,43 +53,11 @@
                         <tr>
                             <td> {{ ticketPrice.rodzaj }}</td>
                             <td>{{ ticketPrice.cena }}</td>
-                            <td>{{ ticketPrice.cena }}</td>
+                            <td>{{ ticketPrice.cenaWeekend }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
-
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Filmy 3D</th>
-                        <th>Pon-czw</th>
-                        <th>Pt-nd</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>normalny</td>
-                        <td>20</td>
-                        <td>25</td>
-
-                    </tr>
-                    <tr>
-                        <td>ulgowy</td>
-                        <td>15</td>
-                        <td>20</td>
-                    </tr>
-                    <tr>
-                        <td>studenci/seniorzy</td>
-                        <td>17</td>
-                        <td>22</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            Promocje studenci, seniorzy oraz bilet normalny po okazaniu legitymacji/dokumentu
-            Dodatkowe promocje:
-            grupa od 8 osób: każda osoba 2zł taniej
         </div>
 
     </div>
