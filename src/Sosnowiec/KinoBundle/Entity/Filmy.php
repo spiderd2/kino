@@ -19,6 +19,14 @@ class Filmy
      */
     private $tytul;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="opis", type="string", length=1500, nullable=false)
+     */
+    private $opis;
+
     /**
      * @var string
      *
@@ -237,5 +245,22 @@ class Filmy
     public function setPlakat($plakat)
     {
         $this->plakat = $plakat;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getOpis()
+    {
+        return $this->opis;
+    }
+
+    /**
+     * @param string $opis
+     */
+    public function setOpis($opis)
+    {
+        $this->opis = $opis;
     }
 }

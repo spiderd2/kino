@@ -27,7 +27,8 @@ class FilmyAdmin extends Admin
                 ->add('dlugosc')
                 ->add('trailer')
                 ->add('rokProdukcji')
-                ->add('plakat');
+                ->add('plakat')
+                ->add('opis');
         }
         else {
             $formMapper
@@ -83,7 +84,9 @@ class FilmyAdmin extends Admin
             }
             $filmweb = Filmweb::instance();
             $filminfo = $filmweb->getFilmInfoFull($id)->execute();
+            $filmdesc = $filmweb->getFilmDescription($id)->execute();
 
+            //dump($filmdesc);die;
             //dump($filminfo);die;
 
             $obj->setTytul($filminfo->title);
@@ -93,6 +96,7 @@ class FilmyAdmin extends Admin
             $obj->setDlugosc($filminfo->duration);
             $obj->setTrailer($filminfo->video["videoUrl"]);
             $obj->setPlakat($filminfo->imagePath);
+            $obj->setOpis($filmdesc->description);
         }
 
     }

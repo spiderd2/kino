@@ -21,17 +21,10 @@ class ShowController extends Controller {
      */
     public function repertuarAction() {
 
-        $filmweb = Filmweb::instance();
-
 
         $em = $this->getDoctrine()->getManager();
         $rows = $em->getRepository('SosnowiecKinoBundle:Seanse')->findAllShows();
-        foreach($rows as $row){
-            $filmwebID = $row->getFilmyFilmu()->getFilmwebId();
-            $filminfo=$filmweb->getFilmInfoFull($filmwebID)->execute();
-            $row->image = $filminfo->imagePath;
-        }
-
+        //dump($rows);die;
         return $this->render("SosnowiecKinoBundle:Show:repertuar.html.twig", array(
             'rows' => $rows
         ));
@@ -40,21 +33,21 @@ class ShowController extends Controller {
 
     /**
      * @Route(
-     *     "/repertuar/{id}",
+     *     "/repertuar/{title}",
      *      name="sosnowiec_kino_repertuar_film")
      *
      * @Template
      */
-    public function repertuarFilmuAction($id) {
-
-        $filmweb = Filmweb::instance();
+    public function repertuarFilmuAction($title) {
 
 
         $em = $this->getDoctrine()->getManager();
-        $movie= $em->getRepository('SosnowiecKinoBundle:Seanse')->findOneByidSeansu($id);
-
+        $rows = $em->getRepository('SosnowiecKinoBundle:Seanse')->findShowByTitle($title);
+        $movie = $em->getRepository('SosnowiecKinoBundle:Seanse')->findOneByTitle($title);
+        //dump($movie);die;
         return $this->render("SosnowiecKinoBundle:Show:repertuarFilmu.html.twig", array(
-            'movie' => $movie
+            'movie' => $movie,
+            'rows' => $rows
         ));
     }
 }

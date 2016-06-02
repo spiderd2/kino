@@ -52,6 +52,8 @@
                         {# styl tylko na chwile #}
                         <td><img src="{{ entry.filmyFilmu.plakat}}" style="max-width: 100px"></td>
                         <td>{{ entry.filmyFilmu.tytul }}</td>
+                        {# czlowiek styl niech to wsadzi gdzie indziej #}
+                        <td><a href="{{ path('sosnowiec_kino_repertuar_film', {title: entry.filmyFilmu.tytul}) }}"> sprawdz dostepne seanse</a></td>
                     </tr>
                 {% endfor %}
             </table>

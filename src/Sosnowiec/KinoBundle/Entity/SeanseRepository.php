@@ -25,4 +25,33 @@ class SeanseRepository extends EntityRepository
         
         return $query->getResult();
     }
+
+    public function findShowByTitle($arg)
+    {
+        $query = $this->createQueryBuilder('s')
+            ->join('s.filmyFilmu', 'f')
+            ->where('s.rozpoczecie <= :date')
+            ->andWhere('s.rozpoczecie >= :now')
+            ->andWhere('f.tytul = :tytul')
+            ->setParameter('date', new \DateTime('+7 days'))
+            ->setParameter('now', new \DateTime('now'))
+            ->setParameter('tytul', $arg)
+            ->getQuery();
+
+        return $query->getResult();
+
+    }
+
+
+    public function findOneByTitle($arg)
+    {
+        $query = $this->createQueryBuilder('s')
+            ->join('s.filmyFilmu', 'f')
+            ->andWhere('f.tytul = :tytul')
+            ->setParameter('tytul', $arg)
+            ->getQuery();
+
+        return $query->getResult();
+
+    }
 }

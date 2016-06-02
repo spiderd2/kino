@@ -26,15 +26,31 @@
 
 
 {% block pageContent %}
-    <div class="container">   
-        
-        <table border="1">
+    <div class="container">
+        <table>
             <tr>
-                {# styl tylko na chwile #}
-                {#<td><img src="{{ movie.image}}" style="max-width: 100px"></td>#}
-                <td>{{ movie.rozpoczecie|date('d-m-Y H:i:s') }}</td>
-                <td>{{ movie.filmyFilmu.tytul }}</td>
+                {# tak wiem brzydkie to ale lepiej nie umiem XD #}
+                <td>{{ movie[0].filmyFilmu.tytul }}</td>
+                <td><img src="{{ movie[0].filmyFilmu.plakat}}"></td>
+                <td>{{ movie[0].filmyFilmu.opis }}</td>
+                <td>{{ movie[0].filmyFilmu.gatunek }}</td>
+                <td>{{ movie[0].filmyFilmu.rokProdukcji }}</td>
+                <td>
+                <video width="320" height="240" controls>
+                    <source src="{{ movie[0].filmyFilmu.trailer }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                </td>
+
             </tr>
+        </table>
+        <table border="1">
+            {% for entry in rows %}
+            <tr>
+                <td> {{ entry.rozpoczecie|date('d-m-Y H:i:s') }} </td>
+                <td> Zarezerwuj bilet</td>
+            </tr>
+            {% endfor %}
         </table>
         
     </div>
