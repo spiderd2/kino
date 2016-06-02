@@ -150,6 +150,12 @@ class HomePageController extends Controller {
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($user);
                 $em->flush();
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Potwierdzenie rejestracji')
+                    ->setFrom(array('kino.kremowka@gmail.com'=>'Kino'))
+                    ->setTo(array($email=>$login))
+                    ->setBody('Dziekujemy za rejestracje.');
+                $this->get('mailer')->send($message);
                 $redirectUrl = $this->generateUrl('sosnowiec_kino_login');
                 return $this->redirect($redirectUrl);
                 //return $this->render('SosnowiecKinoBundle:HomePage:login.html.twig');
