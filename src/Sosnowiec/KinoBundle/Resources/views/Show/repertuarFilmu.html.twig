@@ -27,7 +27,7 @@
 
 {% block pageContent %}
     <div class="container">
-        <table>
+        <table border="1">
             <tr>
                 {# tak wiem brzydkie to ale lepiej nie umiem XD #}
                 <td>{{ movie[0].filmyFilmu.tytul }}</td>
@@ -48,7 +48,7 @@
             {% for entry in rows %}
             <tr>
                 <td> {{ entry.rozpoczecie|date('d-m-Y H:i:s') }} </td>
-                <td> Zarezerwuj bilet</td>
+                <td> <a href="{{ path('sosnowiec_kino_book', {'id_seansu': entry.idSeansu}) }}">Rezerwuj</a></td>
             </tr>
             {% endfor %}
         </table>
