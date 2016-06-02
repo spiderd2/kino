@@ -50,10 +50,7 @@
                 {% for entry in rows %}
                     <tr>
                         {# styl tylko na chwile #}
-                        <td><img src="{{ entry.image}}" style="max-width: 100px"></td>
-                     {#   <td>{{ entry.rozpoczecie|date('d-m-Y') }}
-                       
-                            {{ entry.rozpoczecie|date('H:i') }}</td>#}
+                        <td><img src="{{ entry.filmyFilmu.plakat}}" style="max-width: 100px"></td>
                         <td>{{ entry.filmyFilmu.tytul }}</td>
                     </tr>
                 {% endfor %}

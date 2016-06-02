@@ -18,7 +18,7 @@ class SeanseAdmin extends Admin
     {
         $formMapper
             ->add('rozpoczecie', null, array(
-                'label' => 'bla'
+                'label' => 'Data'
             ))
             ->add('saleKinoweSaleKinowe', 'entity', array(
                 'class' => 'Sosnowiec\KinoBundle\Entity\SaleKinowe',

@@ -22,7 +22,12 @@ class FilmyAdmin extends Admin
     {
         if ($this->id($this->getSubject())) {
             $formMapper
-                ->add('tytul');
+                ->add('tytul')
+                ->add('gatunek')
+                ->add('dlugosc')
+                ->add('trailer')
+                ->add('rokProdukcji')
+                ->add('plakat');
         }
         else {
             $formMapper
@@ -78,8 +83,16 @@ class FilmyAdmin extends Admin
             }
             $filmweb = Filmweb::instance();
             $filminfo = $filmweb->getFilmInfoFull($id)->execute();
+
+            //dump($filminfo);die;
+
             $obj->setTytul($filminfo->title);
             $obj->setFilmwebId($id);
+            $obj->setGatunek($filminfo->genres);
+            $obj->setRokProdukcji($filminfo->year);
+            $obj->setDlugosc($filminfo->duration);
+            $obj->setTrailer($filminfo->video["videoUrl"]);
+            $obj->setPlakat($filminfo->imagePath);
         }
 
     }

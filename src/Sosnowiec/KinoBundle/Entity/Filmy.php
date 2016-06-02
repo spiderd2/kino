@@ -19,6 +19,38 @@ class Filmy
      */
     private $tytul;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gatunek", type="string", length=45, nullable=false)
+     */
+    private $gatunek;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dlugosc", type="integer", nullable=false)
+     */
+    private $dlugosc;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rokProdukcji", type="string", length=45, nullable=false)
+     */
+    private $rokProdukcji;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="trailer", type="string", length=150, nullable=false)
+     */
+    private $trailer;
+
+
 
     /**
      * @var string
@@ -26,6 +58,13 @@ class Filmy
      * @ORM\Column(name="url", type="string", nullable=false, unique=true)
      */
     private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plakat", type="string", nullable=false, unique=true)
+     */
+    private $plakat;
 
 
     /**
@@ -118,5 +157,85 @@ class Filmy
     public function setUrl($url)
     {
         $this->url = $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGatunek()
+    {
+        return $this->gatunek;
+    }
+
+    /**
+     * @param string $gatunek
+     */
+    public function setGatunek($gatunek)
+    {
+        $this->gatunek = $gatunek;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRokProdukcji()
+    {
+        return $this->rokProdukcji;
+    }
+
+    /**
+     * @param string $rokProdukcji
+     */
+    public function setRokProdukcji($rokProdukcji)
+    {
+        $this->rokProdukcji = $rokProdukcji;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDlugosc()
+    {
+        return $this->dlugosc;
+    }
+
+    /**
+     * @param string $dlugosc
+     */
+    public function setDlugosc($dlugosc)
+    {
+        $this->dlugosc = $dlugosc;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTrailer()
+    {
+        return $this->trailer;
+    }
+
+    /**
+     * @param string $trailer
+     */
+    public function setTrailer($trailer)
+    {
+        $this->trailer = $trailer;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlakat()
+    {
+        return $this->plakat;
+    }
+
+    /**
+     * @param string $plakat
+     */
+    public function setPlakat($plakat)
+    {
+        $this->plakat = $plakat;
     }
 }
