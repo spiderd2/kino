@@ -54,4 +54,21 @@ class SeanseRepository extends EntityRepository
         return $query->getResult();
 
     }
+
+
+    public function findLimitedShows($arg)
+    {
+        $query = $this->createQueryBuilder('s')
+            ->join('s.filmyFilmu', 'f')
+            ->groupBy('f.tytul')
+            ->where('s.rozpoczecie <= :date')
+            ->andWhere('s.rozpoczecie >= :now')
+            ->setParameter('date', new \DateTime('+7 days'))
+            ->setParameter('now', new \DateTime('now'))
+            ->setMaxResults( $arg )
+            ->getQuery();
+
+        return $query->getResult();
+
+    }
 }

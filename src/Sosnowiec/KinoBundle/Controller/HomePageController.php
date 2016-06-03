@@ -23,12 +23,19 @@ class HomePageController extends Controller {
      * @Template
      */
     public function indexAction(Request $request) {
+        
+        $em = $this->getDoctrine()->getManager();
+        $rows = $em->getRepository('SosnowiecKinoBundle:Seanse')->findLimitedShows(3);
+        //dump($rows);die;
+        
         if(NULL!=$this->getUser() && $this->getUser() instanceof Uzytkownicy){
         $session = $request->getSession();
-        
         $session->set('id', $this->getUser()->getIdUzytkownika());
         }
-        return array();
+
+        return $this->render("SosnowiecKinoBundle:HomePage:index.html.twig", array(
+            'rows' => $rows
+        ));
     }
 
     /**

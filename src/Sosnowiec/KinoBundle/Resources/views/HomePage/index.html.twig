@@ -26,30 +26,31 @@
     <div class="row" style="padding:80px;">
         
         <div class="col-md-3">
-            <div class="kolumna"><h3>Nagłówek1</h3> <br>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
+            <div class="kolumna"><h3>{{ rows[0].filmyFilmu.tytul }}</h3> <br>
+                {{ rows[0].filmyFilmu.opis }}
             </div>
+
         </div>
 
 
 
         <div class="col-md-6">
-            <div class="kolumna"><h3>Nowości</h3> <br>       
-                <!--tutaj wkleic galerie.........................-->
+            <div class="kolumna"><h3>Nowości</h3> <br>
+                {% for entry in rows %}
+                    <div style="float: left">
+                        {# styl tylko na chwile #}
+                        <img src="{{ entry.filmyFilmu.plakat}}" style="max-width: 100px; float: left">
+                        <p>{{ entry.filmyFilmu.tytul }}</p>
+                    </div>
+                {% endfor %}
+                <br>
                 <div id="legal">
-                    Filmweb API author Michell Hoduyright (c) 2013 nSolutions.pl <br/>
-                    ResponsiveSlides.js is created by <a href="http://viljamis.com">@viljamis</a>
-                    <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                    It has survived not only five centuries, but also the leap into electronic typesetting, 
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+
+                    <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
                     sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
                     like Aldus PageMaker including versions of Lorem Ipsum.
                 </div>
@@ -59,14 +60,10 @@
 
 
         <div class="col-md-3">
-            <div class="kolumna"><h3>Nagłówek2</h3> <br>           
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            <div class="kolumna"><h3>Nagłówek2</h3> <br>
+                Filmweb API author Michell Hoduyright (c) 2013 nSolutions.pl <br/>
+                ResponsiveSlides.js is created by <a href="http://viljamis.com">@viljamis</a>
+            </div>
         </div>
     </div>
 {%endblock%}
