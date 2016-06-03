@@ -20,6 +20,13 @@
             border-radius: 25px;
             padding:10px;           
         }
+        .table > tbody > tr > td
+        {#,.table > thead > tr > th#}
+        {
+            padding :18px;
+            text-align: center;
+            border-top:0px;
+        }
         
     </style>
 {%endblock%}    
@@ -27,11 +34,10 @@
 
 {% block pageContent %}
     <div class="container">
-        <table border="1">
+        <p style="text-align: center; font-size: 24px">{{ movie[0].filmyFilmu.tytul }}
+        <table class="table table-hover">
             <tr>
-                {# tak wiem brzydkie to ale lepiej nie umiem XD #}
-                <td>{{ movie[0].filmyFilmu.tytul }}</td>
-                <td><img src="{{ movie[0].filmyFilmu.plakat}}"></td>
+                <td><img src="{{ movie[0].filmyFilmu.plakat}}" style="max-width: 200px; max-height: 288px"></td>
                 <td>{{ movie[0].filmyFilmu.opis }}</td>
                 <td>{{ movie[0].filmyFilmu.gatunek }}</td>
                 <td>{{ movie[0].filmyFilmu.rokProdukcji }}</td>
@@ -44,7 +50,8 @@
 
             </tr>
         </table>
-        <table border="1">
+        </p>
+        <table class="table table-hover">
             {% for entry in rows %}
             <tr>
                 <td> {{ entry.rozpoczecie|date('d-m-Y H:i:s') }} </td>

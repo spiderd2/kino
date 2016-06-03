@@ -18,6 +18,13 @@
             padding:5px;
             padding-bottom:10px;
         }
+        .table > tbody > tr > td
+        {#,.table > thead > tr > th#}
+        {
+            padding :18px;
+            text-align: center;
+            border-top:0px;
+        }
     </style>
 {%endblock%}    
 
@@ -26,8 +33,8 @@
     <div class="row" style="padding:80px;">
         
         <div class="col-md-3">
-            <div class="kolumna"><h3>{{ rows[0].filmyFilmu.tytul }}</h3> <br>
-                {{ rows[0].filmyFilmu.opis }}
+            <div class="kolumna" style="padding:20px;"><h3>{{ rows[0].filmyFilmu.tytul }}</h3> <br>
+                <p style="font-size: 15px; ">{{ rows[0].filmyFilmu.opis }} </p>
             </div>
 
         </div>
@@ -36,15 +43,25 @@
 
         <div class="col-md-6">
             <div class="kolumna"><h3>Nowości</h3> <br>
+                <table class="table" >
+                    <tr>
+
                 {% for entry in rows %}
-                    <div style="float: left">
+
+
+                           <td>
                         {# styl tylko na chwile #}
-                        <img src="{{ entry.filmyFilmu.plakat}}" style="max-width: 100px; float: left">
-                        <p>{{ entry.filmyFilmu.tytul }}</p>
-                    </div>
+                        <img src="{{ entry.filmyFilmu.plakat}}" style="max-width: 100px; max-height: 144px; float: left"> </td>
+
+                        <td>
+                       <p style="font-size:15px">{{ entry.filmyFilmu.tytul }}</p> </td>
+
                 {% endfor %}
+                    </tr>
+                <tr>
+
                 <br>
-                <div id="legal">
+                <div id="legal" style="padding:20px; font-size: 15px;">
 
                     <br>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -54,15 +71,19 @@
                     sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
                     like Aldus PageMaker including versions of Lorem Ipsum.
                 </div>
+                </tr>
+                    </table>
+
             </div>
         </div>
 
 
 
         <div class="col-md-3">
-            <div class="kolumna"><h3>Nagłówek2</h3> <br>
+            <div class="kolumna" style="padding:20px;"><h3>Nagłówek2</h3> <br>
+                <p style="font-size: 15px; ">
                 Filmweb API author Michell Hoduyright (c) 2013 nSolutions.pl <br/>
-                ResponsiveSlides.js is created by <a href="http://viljamis.com">@viljamis</a>
+                ResponsiveSlides.js is created by <a href="http://viljamis.com">@viljamis</a></p>
             </div>
         </div>
     </div>
