@@ -14,12 +14,6 @@
     <link href="{{asset('bundles/sosnowieckino/js/parsley/parsley.css')}}" rel="stylesheet">
 
     <style>
-        .container
-        {
-            background-color: white;
-            border-radius: 25px;
-            padding:10px;           
-        }
         .table
         {
             background-color: #D8D8D8;
@@ -31,36 +25,38 @@
         {
             padding :18px;    
             text-align: center;
+            font-size: 1.25em; 
+            text-shadow: 5px 5px 20px #182019;
         }
     </style>
 {%endblock%}    
 
 
 {% block pageContent %}
-    <div class="container">
 
-        <div class="col-md-6 col-md-offset-3">
-            <table class="table table-hover">
-                <thead>
+
+    <div class="container col-md-6 col-md-offset-3">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Rodzaj biletu</th>
+                    <th>Pon-czw</th>
+                    <th>Pt-nd</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticketPrice in ticketPrices %}
                     <tr>
-                        <th>Filmy 2D</th>
-                        <th>Pon-czw</th>
-                        <th>Pt-nd</th>
+                        <td> {{ ticketPrice.rodzaj }}</td>
+                        <td>{{ ticketPrice.cena }}</td>
+                        <td>{{ ticketPrice.cenaWeekend }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    {% for ticketPrice in ticketPrices %}
-                        <tr>
-                            <td> {{ ticketPrice.rodzaj }}</td>
-                            <td>{{ ticketPrice.cena }}</td>
-                            <td>{{ ticketPrice.cenaWeekend }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+
+
 
 {%endblock%}
 

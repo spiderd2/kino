@@ -12,7 +12,26 @@
             <!--link rel="stylesheet" href="{{asset('bundles/sosnowieckino/responsiveslides.css')}}"-->
             <!--link rel="stylesheet" href="{{asset('bundles/sosnowieckino/demo.css')}}"-->
 
-
+            <style>             
+                .navbar-default
+                {
+                    font-size: 1.625em; 
+                    text-shadow: 5px 5px 20px #182019;
+                    padding-top:1px; 
+                    text-align: center;
+                    height:auto;
+                    background: white;
+                    transform: none;
+                    cursor: default;
+                    color: white;
+                }   
+                .container
+                {
+                    background-color: white;
+                    border-radius: 25px;
+                    padding:10px;                       
+                }
+            </style>
         {% endblock %}
 
 
@@ -23,10 +42,10 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    
-                        <a href="{{path('sosnowiec_kino_index')}}"> <img src="{{asset('bundles/sosnowieckino/images/logo.png')}}" class="img-responsive" width="437" height="150" align="center"> 
-                        </a>
-                    
+
+                    <a href="{{path('sosnowiec_kino_index')}}"> <img src="{{asset('bundles/sosnowieckino/images/logo.png')}}" class="img-responsive" width="437" height="150" align="center"> 
+                    </a>
+
                 </div>
                 <ul class="nav navbar-nav">
 
@@ -34,18 +53,18 @@
                     <li> <a href="{{path('sosnowiec_kino_repertuar')}}">Repertuar</a> </li>
                     <li> <a href="{{path('sosnowiec_kino_cennik')}}">Cennik</a> </li>
                     <li> <a href="{{path('sosnowiec_kino_kontakt')}}">Kontakt</a>    </li>
-                    {% if app.session.get('id') is not empty %}
-                     <li> <a href="{{ path('sosnowiec_kino_rezerwacje', {'id': app.session.get('id')}) }}">Moje rezerwacje</a> </li>{#<li> <a href="{{path('sosnowiec_kino_rezerwacje', { 'id': app.session.get('id') })}}">Rezerwacje</a>    </li>#}
-                    {% endif %}
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if app.session.get('id') is not empty %}
+                        <li> <a href="{{ path('sosnowiec_kino_rezerwacje', {'id': app.session.get('id')}) }}">Moje rezerwacje</a> </li>{#<li> <a href="{{path('sosnowiec_kino_rezerwacje', { 'id': app.session.get('id') })}}">Rezerwacje</a>    </li>#}
+                        {% endif %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li><a href="{{path('logout')}}">Wyloguj, {{ app.user.username }}</a></li> 
-                    {%else%}  
+                        {%else%}  
                         <li> <a href="{{path('sosnowiec_kino_login')}}">Logowanie</a></li>
-                    {%endif%}
-                    {% if is_granted('ROLE_ADMIN') %}
+                        {%endif%}
+                        {% if is_granted('ROLE_ADMIN') %}
                         <li> <a href="{{path('sonata_admin_dashboard')}}">ADMIN PANEL</a></li>
-                    {%endif%}
-                    
+                        {%endif%}
+
                 </ul>
             </div>
         </nav>
